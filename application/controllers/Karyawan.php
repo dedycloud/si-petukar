@@ -63,6 +63,8 @@ if ($status == 'waiting_accept'){
         $givenstatus = 'waiting_accept';}
         else if ($status == 'success'){
         $givenstatus = 'success';}
+          else if ($status == 'failed'){
+        $givenstatus = 'failed';}
         else {
         $givenstatus = 'proccess';
         }
@@ -77,6 +79,7 @@ if ($status == 'waiting_accept'){
 		$data['view_detail_tugas'] = $this->m_karyawan->detail_task($id, $id_tugas);
 		$data['view_detail_modul'] = $this->m_karyawan->detail_modul($id, $id_tugas, $id_jenis);
 		$data['id_jenis'] = $id_jenis;
+		$data['status'] = $status;
 		$data['user'] = $this->ion_auth->user()->row();
 	    $username=$data['user']->username;
 	    $group=$this->ion_auth->get_users_groups()->row()->id;

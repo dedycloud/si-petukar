@@ -77,12 +77,14 @@
                 <td><?= date("d M Y",strtotime($u->jangka_waktu )) ; ?></td>
                 <td><?php echo $u->judul_tugas?></td>
                 <td><?php echo $u->jenis?></td>
-                <td><?php if($u->status == 'failed' ) { ?> 
+              <td><?php if($u->status == 'failed' ) { ?> 
                   <span class="badge btn-danger">failed</span>
                   <?php } else if($u->status == 'proccess' ) { ?> 
                   <span class="badge btn-info">progress</span>
                   <?php } else if($u->status == 'waiting_accept' ) { ?> 
                        <span class="badge btn-warning">waiting accept</span>
+                  <?php }else if($u->status == 'success' ) { ?> 
+                       <span class="badge btn-success">success</span>
                   <?php }else { ?>
                        <span class="badge btn-default">available</span>
 
@@ -91,7 +93,7 @@
 
                 <td>
                 <!-- nama file, itu nama buat action nya -->
-                 <?php echo anchor('coprojectmanager/detailtugas/'.$u->id. '/'.$u->id_jenis.'/'.$u->status ,'detail'); ?>
+                 <?php echo anchor('coprojectmanager/detailtugas/'.$u->id. '/'.$u->status.'/'.$u->id_jenis ,'detail'); ?>
                
                </td>
            </tr>

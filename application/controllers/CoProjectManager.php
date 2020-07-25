@@ -121,17 +121,19 @@ class Coprojectmanager extends CI_Controller {
 		redirect('Coprojectmanager/tampil_accept_task');
 		}
 
-		public function detailtugas($id_tugas = 0,$id_jenis = 0, $status = 0)
+		public function detailtugas($id_tugas = 0,$status = 0,$id_jenis = 0)
 	{
 		$this->secure();
 		$createby = $this->session->userdata('user_id'); 
 		if ($status == 'waiting_accept'){
-
-				$givenstatus = 'waiting_accept';}
-				else {
-				$givenstatus = 'proccess';
-
-				}
+        $givenstatus = 'waiting_accept';}
+        else if ($status == 'success'){
+        $givenstatus = 'success';}
+          else if ($status == 'failed'){
+        $givenstatus = 'failed';}
+        else {
+        $givenstatus = 'proccess';
+        }
 		$body = array(
 			"status" =>  $givenstatus,
 			"update_at" =>  date("Y-m-d h:i:s"),

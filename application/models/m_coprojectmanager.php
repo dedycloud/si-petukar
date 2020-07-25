@@ -14,7 +14,7 @@ class M_coprojectmanager extends CI_Model{
 		$result = $this->db->query($sql);
 		return $result->result();	
 	}
-
+	
 	function detail_accept_task($id, $id_tugas){
 	$sql=" select * from tbl_tugas where id='$id_tugas' and id_penyetuju = '$id'";
 

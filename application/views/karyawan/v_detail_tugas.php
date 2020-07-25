@@ -28,45 +28,6 @@
 						<div class="message-content" id="id-message-content">
 							<!-- <div class="message-header clearfix">
 								
-							<table  class="col-md-4" >
-									<tr>
-										<td><b>Tujuan </b></td>
-										<td>:</td>
-										<td><?= $row['id_tujuan']; ?></td>
-									</tr>
-										<tr>
-										<td><b>Jangka Waktu</b></td>
-										<td>:</td>
-									</tr>
-											<tr>
-										<td><b>Judul Tugas </b></td>
-										<td>:</td>
-										<td><?= $row['judul_tugas']; ?></td>
-									</tr>
-										<tr>
-										<td><b>Jenis </b></td>
-										<td>:</td>
-										<td><?= $row['id_jenis']; ?></td>
-									</tr>
-										<tr>
-										<td><b>Created At </b></td>
-										<td>:</td>
-										<td><?= $row['created_at']; ?></td>
-									</tr>
-										<tr>
-										<td><b>Created By  </b></td>
-										<td>:</td>
-										<td><?= $row['created_by']; ?></td>
-									</tr>
-										
-											<tr>
-										<td><b>Status </b></td>
-										<td>:</td>
-									<td><?= $row['status']; ?></td>
-
-									</tr>
-								</table>
-
 						</div> -->
               <table class="table table-condensed">
                 <tr>
@@ -115,10 +76,11 @@
 				  <td><?= $row['status']; ?></td>
                 </tr>
                <?php if ( $row['status'] == 'failed'){?>
+
                  <tr>
                   <td></td>
                   <td>Komentar</td>
-                  <td><?= $row['komentar']; ?></td>
+                  <td><b style="color: red" ><?= $row['komentar']; ?></b></td>
                 </tr>
               <?php }?>
                 
@@ -127,6 +89,7 @@
             <?php endforeach ?>
 
             	<div class="box-header">
+
                 <?php if ($id_jenis == 1){ ?>
                   <h3 class="box-title">New Task</h3> 
                 </div>
@@ -183,6 +146,14 @@
             </div>
                 <?php } 
                 ?>  
+                   <?php if ($status == 'failed'){ ?> 
+                      <div><center>REJECTED PLEASE CHECK YOUR TASK</center></div>
+                   <?php } 
+                else if ($status == 'success') { ?>
+         <div><center>Yeayy Your task Success</center> </div>
+
+ <?php } ?>  
+
                 <?php $no = 1; foreach ($view_detail_tugas as $row): ?>
    
                 <div class="modal modal-info fade" id="modal-info<?php echo $row['id']; ?>">
