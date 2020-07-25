@@ -2,8 +2,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
+    <strong>Si-petukar <a href="https://adminlte.io">ptpn 7</a>.</strong> create at 2020
   </footer>
 
   <!-- Control Sidebar -->

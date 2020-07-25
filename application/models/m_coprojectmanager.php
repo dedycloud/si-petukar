@@ -2,7 +2,7 @@
  
 class M_coprojectmanager extends CI_Model{
 	function tampil_task($id){
-		$sql=" select * from tbl_tugas where id_tujuan = '$id'";
+		$sql="  SELECT a.*, b.username FROM tbl_tugas as a, users as b where a.id_tujuan = b.id and a.id_tujuan = '$id' and a.status NOT LIKE 'success'";
 
 		$result = $this->db->query($sql);
 		return $result->result();	

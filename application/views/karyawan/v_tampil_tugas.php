@@ -48,7 +48,24 @@
 								</table>
 
   </div>
-  <div class="col-md-8">
+  <div class="col-md-4">
+      <table  class="  table table-condensed " >
+                 
+                  <tr>
+                    <td><b>Tanggal Hari ini </b></td>
+                    <td>:</td>
+                    <td><?= date("d M Y",strtotime(date("Y-m-d h:i:s"))) ; ?></td>
+                  </tr>
+            
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td> </td>
+                  </tr>
+              
+                </table>
+  </div>
+    <div class="col-md-4">
   </div>
             </div>
   
@@ -73,11 +90,22 @@
                 $no = 1;
                 foreach($view_tampil_tugas as $u){ 
                 ?>
-                <tr>
+                <tr  >
                 <td><?php echo $no++ ?></td>
                 <td><?php echo $u->judul_tugas?></td>
-                <td><?= date("d M Y",strtotime($u->jangka_waktu )) ; ?>    </td>
-                <td><?php echo $u->jenis?></td>
+                <td> <?= date("d M Y",strtotime($u->jangka_waktu )) ; ?>
+                    <?php 
+                        $sql="SELECT datediff(current_date(), '$u->jangka_waktu') as selisih FROM tbl_tugas where id = '$u->id' ";
+                        $sisa = $this->db->query($sql);
+                        $jatuh_tempo = $sisa->row()->selisih;
+                        if ($jatuh_tempo < 0 ) {
+                          echo '( <span style="color: red"><b>'.$jatuh_tempo.' hari lagi </b> </span>  )' ;
+                        }else {
+                          echo ' ( <span style="color: orange"><b>'.$jatuh_tempo.' hari terlewati </b> </span>  )' ;
+                        }               
+                    ?>  
+                   </td>
+                <td><?php echo $u->jenis_tugas?></td>
                 <td><?php if($u->status == 'failed' ) { ?> 
                   <span class="badge btn-danger">failed</span>
                   <?php } else if($u->status == 'proccess' ) { ?> 
@@ -86,14 +114,14 @@
                        <span class="badge btn-warning">waiting accept</span>
                   <?php }else if($u->status == 'success' ) { ?> 
                        <span class="badge btn-success">success</span>
-                  <?php }else { ?>
+                  <?php }else if($u->status == 'revisi' ) { ?> 
+                       <span class="badge btn-success">acc revisi </span>
+                  <?php }
+                  else { ?>
                        <span class="badge btn-default">available</span>
-
                   <?php } ?>
                 </td>
-
                 <td>
-
                   <form class="form-horizontal"action="<?php echo base_url(). 'karyawan/detail/'.$u->id. '/'.$u->id_jenis; ?>" method="post">
                 <input type="hidden" name="id" value="<?php echo $u->id; ?>" />
                 <button type="submit" class="btn btn-outline pull-right" >Detail</button>

@@ -74,7 +74,21 @@
                 <tr>
                 <td><?php echo $no++ ?></td>
                 <td><?php echo $u->id_tujuan?></td>
-                <td><?= date("d M Y",strtotime($u->jangka_waktu )) ; ?></td>
+                <td>
+                  <?= date("d M Y",strtotime($u->jangka_waktu )) ; ?>
+                    <?php 
+                        $sql="SELECT datediff(current_date(), '$u->jangka_waktu') as selisih FROM tbl_tugas where id = '$u->id' ";
+                        $sisa = $this->db->query($sql);
+                        $jatuh_tempo = $sisa->row()->selisih;
+                        if ($jatuh_tempo < 0 ) {
+                          echo ' ( <span class="red"><b>'.$jatuh_tempo.' hari </b> </span>  )' ;
+                        }else {
+                          echo ' ( <span class="green"><b>'.$jatuh_tempo.' hari </b> </span>  )' ;
+                        }
+                  
+                  
+                    ?>  
+                  </td>
                 <td><?php echo $u->judul_tugas?></td>
                 <td><?php echo $u->jenis?></td>
               <td><?php if($u->status == 'failed' ) { ?> 
@@ -85,7 +99,10 @@
                        <span class="badge btn-warning">waiting accept</span>
                   <?php }else if($u->status == 'success' ) { ?> 
                        <span class="badge btn-success">success</span>
-                  <?php }else { ?>
+                  <?php }else if($u->status == 'revisi' ) { ?> 
+                       <span class="badge btn-success">acc revisi </span>
+                  <?php }
+                  else { ?>
                        <span class="badge btn-default">available</span>
 
                   <?php } ?>

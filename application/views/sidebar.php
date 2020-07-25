@@ -81,7 +81,7 @@ echo "admin";
         </li>
 
         <li>
-          <a href="pages/widgets.html">
+          <a href="<?php echo base_url(); ?>karyawan/tampil_history_task">
             <i class="fa fa-th"></i> <span>History</span>
             
           </a>

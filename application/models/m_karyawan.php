@@ -2,7 +2,13 @@
  
 class M_karyawan extends CI_Model{
 	function tampil_task($id){
-	$sql=" SELECT a.*, b.username FROM tbl_tugas as a, users as b where a.id_tujuan = b.id and a.id_tujuan = '$id'";
+	$sql=" SELECT a.*, b.username ,c.jenis_tugas FROM tbl_tugas as a, users as b ,tbl_jenis_tugas as c where a.id_tujuan = b.id and a.id_tujuan = '$id' and a.status NOT LIKE 'success' and a.id_jenis = c.id ";
+		$result = $this->db->query($sql);
+		return $result->result();	
+	}
+
+function tampil_history_task($id){
+	$sql=" SELECT a.*, b.username FROM history_tugas as a, users as b where a.tujuan = b.id and a.tujuan = '$id' and a.status_success NOT LIKE '' or a.status_revisi NOT LIKE '' ";
 		$result = $this->db->query($sql);
 		return $result->result();	
 	}
@@ -15,20 +21,19 @@ class M_karyawan extends CI_Model{
 	}
 
 	function detail_modul($id, $id_tugas, $id_jenis){
-	$sql=" select b.id as id, b.status as status , a.judul_tugas as modul ,c.deskripsi as detail_modul from tbl_tugas as a , tbl_modul_tugas as b, tbl_modul as c where a.id_jenis='$id_jenis' and a.id='$id_tugas' and a.id_tujuan ='$id' and a.id=b.id_tugas and  b.id_modul = c.id";
+	$sql=" select b.id as id, b.status as status, b.file as file , a.judul_tugas as modul ,c.deskripsi as detail_modul from tbl_tugas as a , tbl_modul_tugas as b, tbl_modul as c where a.id_jenis='$id_jenis' and a.id='$id_tugas' and a.id_tujuan ='$id' and a.id=b.id_tugas and  b.id_modul = c.id";
 
 		$result = $this->db->query($sql);
 		return $result->result_array();	
 	}
 
 	function submit_task($data, $id_task, $table){
-// 			print_r($data);
-// 				print_r('-----------');
-// 					print_r($id_task);
-// 						print_r($table
-// 					);
-// die();
 	$this->db->where('id', $id_task);
+   $this->db->update($table, $data);
+	}
+
+	function update_modul_task($data, $id_modul, $table){
+	$this->db->where('id', $id_modul);
    $this->db->update($table, $data);
 	}
 }

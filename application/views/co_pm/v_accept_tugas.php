@@ -90,6 +90,8 @@
                        <span class="badge btn-warning">waiting accept</span>
                   <?php } else if($u->status == 'success' ) { ?> 
                        <span class="badge btn-success">success</span>
+                  <?php }else if($u->status == 'revisi' ) { ?> 
+                       <span class="badge btn-success">acc revisi </span>
                   <?php }
                   else { ?>
                        <span class="badge btn-default">available</span>
