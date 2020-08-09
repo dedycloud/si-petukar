@@ -55,7 +55,7 @@
                 <td><?php echo $u->id_tujuan?></td>
                 <td><?= date("d M Y",strtotime($u->jangka_waktu )) ; ?></td>
                 <td><?php echo $u->judul_tugas?></td>
-                <td><?php echo $u->jenis?></td>
+                <td><?php echo $u->id_jenis ?></td>
            <td><?php if($u->status == 'failed' ) { ?> 
                   <span class="badge btn-danger">failed</span>
                   <?php } else if($u->status == 'proccess' ) { ?> 

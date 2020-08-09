@@ -122,11 +122,11 @@
                   <?php } ?>
                 </td>
                 <td>
-                  <form class="form-horizontal"action="<?php echo base_url(). 'karyawan/detail/'.$u->id. '/'.$u->id_jenis; ?>" method="post">
+<!--                   <form class="form-horizontal"action="<?php echo base_url(). 'karyawan/detail/'.$u->id. '/'.$u->id_jenis; ?>" method="post">
                 <input type="hidden" name="id" value="<?php echo $u->id; ?>" />
                 <button type="submit" class="btn btn-outline pull-right" >Detail</button>
             </div>
-          </form>
+          </form> -->
                 <!-- nama file, itu nama buat action nya -->
                  <?php echo anchor('karyawan/detail/'.$u->id. '/'.$u->status.'/'.$u->id_jenis,'detail'); ?>
                
