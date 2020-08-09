@@ -88,6 +88,24 @@ class Projectmanager extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function tambahtugas_modul()
+	{
+		$this->secure();
+		$data['tujuan'] =$this->m_projectmanager->get_data_tujuan();
+		$data['penyetuju'] =$this->m_projectmanager->get_data_penyetuju();
+		$data['jenis'] =$this->m_projectmanager->get_data_jenis();
+		$data['modul'] =$this->m_projectmanager->get_data_modul();
+		$data['user'] = $this->ion_auth->user()->row();
+		$username=$data['user']->username;
+		$group=$this->ion_auth->get_users_groups()->row()->id;
+		$data['group']=$group;
+		$this->load->view('header',$data);
+		$this->load->view('navigation');
+		$this->load->view('sidebar',$data);
+		$this->load->view('project_manager/v_tambahtugas_modul');
+		$this->load->view('footer');
+	}
+
 	public function actiontambahtugas()
 	{
 		

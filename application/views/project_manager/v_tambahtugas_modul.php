@@ -98,6 +98,17 @@
                 </select>                  </div>
                 </div>
 
+                  <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-2 control-label">modul tugas </label>
+                  <div class="col-sm-10">
+                  <select class="form-control select2"name="modul" style="width: 100%;" >
+                  <option>--Pilih--</option>
+                  <?php foreach($modul as $row) : ?>
+            <option value="<?=$row['id'] ?>"><?=$row['nama'] ?></option>   
+          <?php endforeach; ?>
+                </select>                  </div>
+                </div>
+
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
                     <div class="checkbox">
