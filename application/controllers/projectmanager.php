@@ -37,6 +37,22 @@ class Projectmanager extends CI_Controller {
 		$this->load->view('dashboard');
 		$this->load->view('footer');
 	}
+	
+	public function guide()
+	{
+		$this->secure();
+		$data['user'] = $this->ion_auth->user()->row();
+		$username=$data['user']->username;
+		$group=$this->ion_auth->get_users_groups()->row()->id;
+		$data['group']=$group;
+		$this->load->view('header',$data);
+		$this->load->view('navigation');
+		$this->load->view('sidebar',$data);
+		$this->load->view('guide');
+		$this->load->view('footer');
+	}
+	
+
 
 	public function tampil_create_task()
 	{
@@ -70,6 +86,21 @@ class Projectmanager extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+	public function tampil_modul()
+	{
+		$this->secure();
+		$id = $this->session->userdata('user_id'); 
+		$data['user'] = $this->ion_auth->user()->row();
+		$username=$data['user']->username;
+		$group=$this->ion_auth->get_users_groups()->row()->id;
+		$data['group']=$group;
+		$this->load->view('header',$data);
+		$this->load->view('navigation');
+		$this->load->view('sidebar',$data);
+		$this->load->view('project_manager/v_tampil_modul_parent');
+		$this->load->view('footer');
+	}
+
 	public function tambahtugas()
 	{
 		$this->secure();
@@ -84,7 +115,7 @@ class Projectmanager extends CI_Controller {
 		$this->load->view('header',$data);
 		$this->load->view('navigation');
 		$this->load->view('sidebar',$data);
-		$this->load->view('project_manager/v_tambah_tugas');
+		$this->load->view('project_manager/v_tambah_tugas',$data);
 		$this->load->view('footer');
 	}
 
@@ -102,8 +133,8 @@ class Projectmanager extends CI_Controller {
 		$this->load->view('header',$data);
 		$this->load->view('navigation');
 		$this->load->view('sidebar',$data);
-		$this->load->view('project_manager/v_tambahtugas_modul');
-		$this->load->view('footer');
+		$this->load->view('project_manager/v_tambahtugas_modul',$data);
+		$this->load->view('footer',$data);
 	}
 
 	public function actiontambahtugas()
@@ -114,6 +145,7 @@ class Projectmanager extends CI_Controller {
 		$jangka_waktu = $this->input->post('jangka_waktu');
 		$judul_tugas = $this->input->post('judul_tugas');
 		$deskripsi = $this->input->post('deskripsi');
+		$jenis = $this->input->post('jenis');
 		$createby = $this->session->userdata('user_id'); 
 
 		$data = array(
@@ -122,13 +154,60 @@ class Projectmanager extends CI_Controller {
 			'jangka_waktu' => $jangka_waktu,
 			'judul_tugas' => $judul_tugas,
 			'deskripsi_tugas' => $deskripsi,
-			'id_jenis' => 1, 
+			'id_jenis' => $jenis, 
 			'status' => 'available',
 			'id_penyetuju' => $penyetuju,
 			"created_at" =>  date("Y-m-d h:i:s"),
 			"created_by" =>  $createby
 		);
 		$this->m_projectmanager->input_data($data,'tbl_tugas');
+		redirect('projectmanager/tampil_create_task');
+	}
+
+
+	public function action_tambahtugas_modul()
+	{
+		//insert tugas
+		$tujuan = $this->input->post('tujuan');
+		$penyetuju = $this->input->post('penyetuju');
+		$jangka_waktu = $this->input->post('jangka_waktu');
+		$judul_tugas = $this->input->post('judul_tugas');
+		$deskripsi = $this->input->post('deskripsi');
+		$jenis = $this->input->post('jenis');
+		$createby = $this->session->userdata('user_id'); 
+	
+
+		$data = array(
+			
+			'id_tujuan' => $tujuan,
+			'jangka_waktu' => $jangka_waktu,
+			'judul_tugas' => $judul_tugas,
+			'deskripsi_tugas' => $deskripsi,
+			'id_jenis' => $jenis, 
+			'status' => 'available',
+			'id_penyetuju' => $penyetuju,
+			"created_at" =>  date("Y-m-d h:i:s"),
+			"created_by" =>  $createby
+		);
+		$this->m_projectmanager->input_data($data,'tbl_tugas');
+
+		$id_tugas= $this->m_projectmanager->select_id_by_judul($judul_tugas,$tujuan,$jenis);	
+		//insert modul tugas
+		 $insertModul = array();
+		$index = 0; 
+			$modul = $this->input->post('modul');
+		foreach($modul as $datamodul){ 
+			array_push($insertModul, array(
+				'id_tugas'=>$id_tugas->id,
+				'id_modul'=>$datamodul,  
+				'status'=>'proccess',  
+				'file'=> 'not add file',  
+			));
+
+			$index++;
+		}
+		$this->m_projectmanager->input_data_modul($insertModul,'tbl_modul_tugas');
+
 		redirect('projectmanager/tampil_create_task');
 	}
 
@@ -165,7 +244,7 @@ class Projectmanager extends CI_Controller {
 
 	public function actionedittugas()
 	{
-		
+
 		$tujuan = $this->input->post('tujuan');
 		$penyetuju = $this->input->post('penyetuju');
 		$jangka_waktu = $this->input->post('jangka_waktu');
@@ -174,7 +253,7 @@ class Projectmanager extends CI_Controller {
 		$updateby = $this->session->userdata('user_id'); 
 		$id = $this->input->post('id');
 		$data = array(
-			
+
 			'id_tujuan' => $tujuan,
 			'jangka_waktu' => $jangka_waktu,
 			'judul_tugas' => $judul_tugas,

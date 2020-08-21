@@ -37,6 +37,19 @@ class karyawan extends CI_Controller {
 		$this->load->view('dashboard');
 		$this->load->view('footer');
 	}
+	public function guide()
+	{
+		$this->secure();
+		$data['user'] = $this->ion_auth->user()->row();
+		$username=$data['user']->username;
+		$group=$this->ion_auth->get_users_groups()->row()->id;
+		$data['group']=$group;
+		$this->load->view('header',$data);
+		$this->load->view('navigation');
+		$this->load->view('sidebar',$data);
+		$this->load->view('guide');
+		$this->load->view('footer');
+	}
 
 	public function tampil_task()
 	{

@@ -86,6 +86,12 @@
             
           </a>
         </li>
+         <li>
+          <a href="<?php echo base_url(); ?>karyawan/guide">
+            <i class="fa fa-th"></i> <span>Guide</span>
+            
+          </a>
+        </li>
 
       <?php  }elseif($this->ion_auth->in_group('project_manager')) { ?>
         <li>
@@ -95,16 +101,23 @@
           </a>
         </li>
 
-        <li>
-          <a href="<?php echo base_url(); ?>projectmanager/tampil_task">
-            <i class="fa fa-th"></i> <span>My Task</span>
-            
-          </a>
-        </li>
+      
 
         <li>
           <a href="<?php echo base_url(); ?>projectmanager/tampil_create_task">
             <i class="fa fa-th"></i> <span>Create Task</span>
+            
+          </a>
+        </li>
+          <li>
+          <a href="<?php echo base_url(); ?>projectmanager/tampil_modul">
+            <i class="fa fa-th"></i> <span>Create Modul</span>
+            
+          </a>
+        </li>
+         <li>
+          <a href="<?php echo base_url(); ?>projectmanager/guide">
+            <i class="fa fa-th"></i> <span>Guide</span>
             
           </a>
         </li>
@@ -118,13 +131,13 @@
           </a>
         </li>
 
-        <li>
+    <!--     <li>
           <a href="<?php echo base_url(); ?>coprojectmanager/tampil_task">
             <i class="fa fa-th"></i> <span>My Task</span>
             
           </a>
         </li>
-
+ -->
 
         <li>
           <a href="<?php echo base_url(); ?>coprojectmanager/tampil_accept_task">
@@ -133,6 +146,12 @@
           </a>
         </li>
 
+ <li>
+          <a href="<?php echo base_url(); ?>coprojectmanager/guide">
+            <i class="fa fa-th"></i> <span>Guide</span>
+            
+          </a>
+        </li>
         
 
       <?php  }else { ?>
