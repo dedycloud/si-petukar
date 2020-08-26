@@ -33,10 +33,10 @@
 
 
 							<div class="form-group">
-								<label for="inputEmail3" class="col-sm-2 control-label">Tujuan</label>
+								<label for="inputEmail3" class="col-sm-2 control-label">Bagian</label>
 
 								<div class="col-sm-10">
-									<select class="form-control select2"name="tujuan" style="width: 100%;" >
+									<select class="form-control select2"name="bagian" style="width: 100%;" >
 										<option>--Pilih--</option>
 										<?php foreach($divisi as $row) : ?>
 											<!-- -->

@@ -8,6 +8,8 @@ class Coprojectmanager extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('m_coprojectmanager');
 		$this->load->model('m_karyawan');
+			$this->load->model('M_dashboard');
+		$this->load->model('M_chart');
 		$this->load->database();
 		$this->load->helper(array('form', 'url','directory','path'));	
  
@@ -28,6 +30,13 @@ class Coprojectmanager extends CI_Controller {
 	public function index()
 	{
 		$this->secure();
+				$id = $this->session->userdata('user_id'); 
+
+		$data['success'] = $this->M_dashboard->tampil_all_success_cpo($id);
+		$data['reject'] = $this->M_dashboard->tampil_all_reject_cpo($id);
+		$data['proccess'] = $this->M_dashboard->tampil_proccess_cpo($id);
+		$data['revisi'] = $this->M_dashboard->tampil_all_revisi_Cpo($id);
+		$data['charts'] = $this->M_chart->tampil_chart_admin();
 		 $data['user'] = $this->ion_auth->user()->row();
 	    $username=$data['user']->username;
 	    $group=$this->ion_auth->get_users_groups()->row()->id;
@@ -36,6 +45,8 @@ class Coprojectmanager extends CI_Controller {
 		$this->load->view('navigation');
 		$this->load->view('sidebar',$data);
 		$this->load->view('dashboard');
+				$this->load->view('chart.php',$data);
+
 		$this->load->view('footer');
 		}
 

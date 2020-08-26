@@ -7,6 +7,8 @@ class Projectmanager extends CI_Controller {
 		parent::__construct();		
 		$this->load->helper('url');
 		$this->load->model('m_projectmanager');
+		$this->load->model('M_dashboard');
+		$this->load->model('M_chart');
 		$this->load->database();
 		$this->load->helper(array('form', 'url','directory','path'));	
 		
@@ -27,6 +29,12 @@ class Projectmanager extends CI_Controller {
 	public function index()
 	{
 		$this->secure();
+		$id = $this->session->userdata('user_id'); 
+		$data['allTaskCreated'] = $this->M_dashboard->tampil_all_task_po($id);
+		$data['taskModul'] = $this->M_dashboard->tampil_task_modul_po($id);
+		$data['task'] = $this->M_dashboard->tampil_task_po($id);
+		$data['AllModul'] = $this->M_dashboard->tampil_all_modul_po($id);
+		$data['charts'] = $this->M_chart->tampil_chart_admin();
 		$data['user'] = $this->ion_auth->user()->row();
 		$username=$data['user']->username;
 		$group=$this->ion_auth->get_users_groups()->row()->id;
@@ -35,6 +43,8 @@ class Projectmanager extends CI_Controller {
 		$this->load->view('navigation');
 		$this->load->view('sidebar',$data);
 		$this->load->view('dashboard');
+				$this->load->view('chart.php',$data);
+
 		$this->load->view('footer');
 	}
 	
@@ -90,6 +100,7 @@ class Projectmanager extends CI_Controller {
 	{
 		$this->secure();
 		$id = $this->session->userdata('user_id'); 
+		$data['view_tampil_divisi'] = $this->m_projectmanager->tampil_modul_by_divisi();
 		$data['user'] = $this->ion_auth->user()->row();
 		$username=$data['user']->username;
 		$group=$this->ion_auth->get_users_groups()->row()->id;
@@ -97,7 +108,23 @@ class Projectmanager extends CI_Controller {
 		$this->load->view('header',$data);
 		$this->load->view('navigation');
 		$this->load->view('sidebar',$data);
-		$this->load->view('project_manager/v_tampil_modul_parent');
+		$this->load->view('project_manager/v_tampil_modul_parent',$data);
+		$this->load->view('footer');
+	}
+
+	public function tampil_modul_child($divisi)
+	{
+		$this->secure();
+		$id = $this->session->userdata('user_id'); 
+		$data['view_tampil_modul'] = $this->m_projectmanager->tampil_all_modul_by_divisi($divisi);
+		$data['user'] = $this->ion_auth->user()->row();
+		$username=$data['user']->username;
+		$group=$this->ion_auth->get_users_groups()->row()->id;
+		$data['group']=$group;
+		$this->load->view('header',$data);
+		$this->load->view('navigation');
+		$this->load->view('sidebar',$data);
+		$this->load->view('project_manager/v_tampil_modul',$data);
 		$this->load->view('footer');
 	}
 
@@ -119,9 +146,10 @@ class Projectmanager extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	public function tambahtugas_modul()
+	public function tambahtugas_bymodul()
 	{
 		$this->secure();
+
 		$data['tujuan'] =$this->m_projectmanager->get_data_tujuan();
 		$data['penyetuju'] =$this->m_projectmanager->get_data_penyetuju();
 		$data['jenis'] =$this->m_projectmanager->get_data_jenis();
@@ -134,6 +162,22 @@ class Projectmanager extends CI_Controller {
 		$this->load->view('navigation');
 		$this->load->view('sidebar',$data);
 		$this->load->view('project_manager/v_tambahtugas_modul',$data);
+		$this->load->view('footer',$data);
+	}
+
+	public function tambahtugas_modul()
+	{
+		$this->secure();
+		$data['divisi'] =$this->m_projectmanager->tampil_all_divisi();
+		$data['modul'] =$this->m_projectmanager->get_data_modul();
+		$data['user'] = $this->ion_auth->user()->row();
+		$username=$data['user']->username;
+		$group=$this->ion_auth->get_users_groups()->row()->id;
+		$data['group']=$group;
+		$this->load->view('header',$data);
+		$this->load->view('navigation');
+		$this->load->view('sidebar',$data);
+		$this->load->view('project_manager/v_tambah_modul',$data);
 		$this->load->view('footer',$data);
 	}
 
@@ -162,6 +206,26 @@ class Projectmanager extends CI_Controller {
 		);
 		$this->m_projectmanager->input_data($data,'tbl_tugas');
 		redirect('projectmanager/tampil_create_task');
+	}
+
+
+	public function actiontambahmodul()
+	{
+		
+		$tujuan = $this->input->post('bagian');
+		$nama = $this->input->post('judul_modul');
+		$deskripsi = $this->input->post('deskripsi');
+
+
+		$data = array(
+			
+			'divisi' => $tujuan,
+			'nama' => $nama,
+			'deskripsi' => $deskripsi,
+		
+		);
+		$this->m_projectmanager->input_data($data,'tbl_modul');
+		redirect('projectmanager/tampil_modul');
 	}
 
 

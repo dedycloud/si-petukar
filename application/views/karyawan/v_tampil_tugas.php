@@ -129,7 +129,7 @@
           </form> -->
                 <!-- nama file, itu nama buat action nya -->
                  <?php echo anchor('karyawan/detail/'.$u->id. '/'.$u->status.'/'.$u->id_jenis,'detail'); ?>
-               
+             
                </td>
 
            </tr>

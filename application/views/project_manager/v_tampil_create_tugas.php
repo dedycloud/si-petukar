@@ -25,7 +25,7 @@
             <i class="fa fa-edit"></i> Create task Now  &nbsp  &nbsp
           </a>
     <b>&nbsp  &nbsp 2.</b>
-           <a  href="<?php echo base_url() ; ?>projectmanager/tambahtugas_modul" class="btn btn-app">
+           <a  href="<?php echo base_url() ; ?>projectmanager/tambahtugas_bymodul" class="btn btn-app">
             <i class="fa fa-edit"></i> Create task modul
           </a>
 
@@ -59,7 +59,7 @@
                 <td><?php echo $u->id_tujuan?></td>
                 <td><?= date("d M Y",strtotime($u->jangka_waktu )) ; ?></td>
                 <td><?php echo $u->judul_tugas?></td>
-                <td><?php echo $u->id_jenis ?></td>
+                <td><?php  if($u->id_jenis == 1){  ?> tugas now <?php } elseif ($u->id_jenis == 2){ ?> tugas job <?php }  ?></td>
                 <td><?php if($u->status == 'failed' ) { ?> 
                   <span class="badge btn-danger">failed</span>
                 <?php } else if($u->status == 'proccess' ) { ?> 

@@ -20,8 +20,13 @@ function tampil_history_task($id){
 		return $result->result_array();	
 	}
 
+function check_task_modul($tugas){
+			$sql="SELECT COUNT(*) as jmlh FROM `tbl_modul_tugas` WHERE id_tugas = '$tugas' AND file = 'not add file '";
+		$result = $this->db->query($sql);
+		return $result->row();
+	}
 	function detail_modul($id, $id_tugas, $id_jenis){
-	$sql=" select b.id as id, b.status as status, b.file as file , a.judul_tugas as modul ,c.deskripsi as detail_modul from tbl_tugas as a , tbl_modul_tugas as b, tbl_modul as c where a.id_jenis='$id_jenis' and a.id='$id_tugas' and a.id_tujuan ='$id' and a.id=b.id_tugas and  b.id_modul = c.id";
+	$sql=" select b.id_tugas as id_tugas, b.id as id, b.status as status, b.file as file , a.judul_tugas as modul ,c.deskripsi as detail_modul from tbl_tugas as a , tbl_modul_tugas as b, tbl_modul as c where a.id_jenis='$id_jenis' and a.id='$id_tugas' and a.id_tujuan ='$id' and a.id=b.id_tugas and  b.id_modul = c.id";
 
 		$result = $this->db->query($sql);
 		return $result->result_array();	

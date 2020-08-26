@@ -7,6 +7,30 @@ class M_projectmanager extends CI_Model{
 		$result = $this->db->query($sql);
 		return $result->result();	
 	}
+
+	function tampil_modul_by_divisi(){
+		$sql=" 	SELECT * FROM `tbl_modul`as a, tbl_bagian as b WHERE a.divisi = b.id GROUP BY a.divisi ";
+
+		$result = $this->db->query($sql);
+		return $result->result();	
+	}
+
+	function tampil_all_divisi(){
+		$sql=" select * from tbl_bagian";
+
+		$result = $this->db->query($sql);
+		return $result->result_array();	
+	}
+
+	function tampil_all_modul_by_divisi($divisi){
+		$sql=" SELECT * FROM `tbl_modul`as a, tbl_bagian as b WHERE a.divisi = b.id and a.divisi = '$divisi'";
+
+		$result = $this->db->query($sql);
+		return $result->result();	
+	}
+
+
+
 	function input_data($data,$table){
 		$this->db->insert($table,$data);
 	}
@@ -21,6 +45,8 @@ class M_projectmanager extends CI_Model{
 		$result = $this->db->query($sql);
 		return $result->row();
 	}
+
+
 
 	function detail_create_task($id_detail){
 		$sql=" select * from tbl_tugas where id = '$id_detail'";

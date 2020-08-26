@@ -95,7 +95,7 @@
 
       <?php  }elseif($this->ion_auth->in_group('project_manager')) { ?>
         <li>
-          <a href="<?php echo base_url(); ?>Dashboard/">
+          <a href="<?php echo base_url(); ?>projectmanager/">
             <i class="fa fa-th"></i> <span>Dashboard</span>
             
           </a>
@@ -125,7 +125,7 @@
 
       <?php  }elseif($this->ion_auth->in_group('co_project_manager')) { ?>
         <li>
-          <a href="<?php echo base_url(); ?>Dashboard">
+          <a href="<?php echo base_url(); ?>coprojectmanager">
             <i class="fa fa-th"></i> <span>Dashboard</span>
             
           </a>

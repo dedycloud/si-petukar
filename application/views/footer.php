@@ -16,6 +16,8 @@
 
  <!-- jQuery 3 -->
  <script src="<?php echo base_url(); ?>assets/bower_components/jquery/dist/jquery.min.js"></script>
+ 
+
  <script src="<?php echo base_url(); ?>assets/bower_components/select2/dist/js/select2.full.min.js"></script>
  <script src="<?php echo base_url(); ?>assets/bower_components/jquery-ui/jquery-ui.min.js"></script>
 
@@ -152,7 +154,7 @@
         "    <select class='form-control select2'name='modul[]' style='width: 100%;' >" +
         "<option>--Pilih--</option>"+
         " <?php foreach($modul as $row) : ?>"+
-        "  <option value='<?=$row['id'] ?>'><?=$row['nama'] ?></option>  "+
+        "  <option value='<?=$row['id'] ?>'><?=$row['divisi'] ?> -><?=$row['nama'] ?></option>  "+
         "  <?php endforeach; ?>"+
 
 

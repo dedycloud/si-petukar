@@ -100,13 +100,12 @@ class Auth extends CI_Controller
 				} else if($this->ion_auth->in_group('karyawan') ) { 
 					$this->session->set_flashdata('message', 'You must be an karyawan to view this page');
 					redirect('/', 'refresh');
-				} else if($this->ion_auth->in_group('manager_unit') ) { 
+				} else if($this->ion_auth->in_group('project_manager') ) { 
 					$this->session->set_flashdata('message', 'You must be an manager_unit to view this page');
-				
-					redirect('/', 'refresh');
-				} else if($this->ion_auth->in_group('kepala_bagian') ) { 
+					redirect('/projectmanager', 'refresh');
+				} else if($this->ion_auth->in_group('co_project_manager') ) { 
 					$this->session->set_flashdata('message', 'You must be an kepala_bagian to view this page');
-					redirect('/', 'refresh');
+					redirect('/Coprojectmanager', 'refresh');
 				} else  { 
 					$this->session->set_userdata('url_default', $url_default);
 					redirect($url_default, 'refresh');

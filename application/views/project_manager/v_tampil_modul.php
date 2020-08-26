@@ -36,9 +36,9 @@
               ?>
               <tr>
                 <td><?php echo $no++ ?></td>
-                <td><?php echo $u->id_tujuan?></td>
-                <td><?= date("d M Y",strtotime($u->jangka_waktu )) ; ?></td>
-                <td><?php echo $u->judul_tugas?></td>
+                <td><?php echo $u->nama_bagian ?></td>
+                <td><?php echo $u->nama ?></td>
+                <td><?php echo $u->deskripsi ?></td>
              <td>
               <?php echo anchor('projectmanager/edit_task/'.$u->id,'edit'); ?>
               <?php echo anchor('projectmanager/hapus_task/'.$u->id,'hapus'); ?>

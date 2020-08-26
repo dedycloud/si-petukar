@@ -35,7 +35,7 @@ class Admin extends CI_Controller {
 		$data['group']=$group;
 				$id = $this->session->userdata('user_id'); 
 
-			$data['allTask'] = $this->M_dashboard->tampil_all_task_admin();
+		$data['allTask'] = $this->M_dashboard->tampil_all_task_admin();
 		$data['taskSuccess'] = $this->M_dashboard->tampil_task_success_admin();
 		$data['taskInProgress'] = $this->M_dashboard->tampil_task_inProgress_admin();
 		$data['taskRejected'] = $this->M_dashboard->tampil_task_rejected_admin();

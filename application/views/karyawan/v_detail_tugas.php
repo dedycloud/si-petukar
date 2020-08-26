@@ -88,6 +88,7 @@
           </div>
         <?php endforeach ?>
 
+ 
         <div class="box-header">
 
           <?php if ($id_jenis == 1){ ?>
@@ -150,7 +151,7 @@
 
      </td>
      <td><?= $row['status']; ?></td>
-     <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-<?php echo $row['id']; ?>">
+     <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal<?php echo $row['id']; ?>">
       Kerjakan
     </button> </td>
   </tr>
@@ -202,7 +203,7 @@ else if ($status == 'success') { ?>
 
 <?php $no = 1; foreach ($view_detail_modul as $row): ?>
 
-<div class="modal modal-info fade" id="modal-<?php echo $row['id']; ?>">
+<div class="modal modal-info fade" id="modal<?php echo $row['id']; ?>">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -210,7 +211,7 @@ else if ($status == 'success') { ?>
           <span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title">Info Modal</h4>
         </div>
-        <form class="form-horizontal"action="<?php echo base_url(). 'karyawan/update_modul_task/'  ?>" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal"action="<?php echo base_url(). 'karyawan/update_modul_task/'.$row['id_tugas'];  ?>" method="post" enctype="multipart/form-data">
           <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
 
           <div class="modal-body">

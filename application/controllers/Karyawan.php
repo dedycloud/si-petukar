@@ -55,6 +55,7 @@ class karyawan extends CI_Controller {
 	{
 		$this->secure();
 		$id = $this->session->userdata('user_id'); 
+
 		$data['view_tampil_tugas'] = $this->m_karyawan->tampil_task($id);
 		$data['user'] = $this->ion_auth->user()->row();
 		$username=$data['user']->username;
@@ -141,13 +142,14 @@ class karyawan extends CI_Controller {
 							"update_by" =>  $createby,
 							"dokumen" => $_data['upload_data']['file_name']
 						);
+						
 						$this->m_karyawan->submit_task($data,$id_task,'tbl_tugas');
 						redirect('karyawan/tampil_task');
 					}	
 					
 				}
 
-				public function update_modul_task()
+				public function update_modul_task($id_tugas = 0)
 				{
 					$id_modul = $this->input->post('id');
 
@@ -168,29 +170,22 @@ class karyawan extends CI_Controller {
 							"file" => $_data['upload_data']['file_name']
 						);
 						$this->m_karyawan->update_modul_task($data, $id_modul, 'tbl_modul_tugas');
+// update terbaru
+						$chek = $this->m_karyawan->check_task_modul($id_tugas);
+						if($chek->jmlh == 0){
+						$body = array(
+						"status" =>  'waiting_accept',
+						"update_at" =>  date("Y-m-d h:i:s"),
+						"update_by" =>  $createby
+					);
+						$this->m_karyawan->submit_task($body,$id_tugas,'tbl_tugas');
+
+						}
+						// update terbaaru
 						redirect('karyawan/tampil_task');
 					}
 					
 				}
-
-
-//      public function aksi_upload(){
-// 	$config['upload_path']          = './upload/';
-// 	$config['allowed_types']        = 'gif|jpg|png|xlxs';
-// 	$config['max_size']             = 1000;
-// 	$config['max_width']            = 1024;
-// 	$config['max_height']           = 768;
-
-// 	$this->load->library('upload', $config);
-
-// 	if ( ! $this->upload->do_upload('berkas')){
-// 		$error = array('error' => $this->upload->display_errors());
-// 		$this->load->view('v_upload', $error);
-// 	}else{
-// 		$data = array('upload_data' => $this->upload->data());
-// 		$this->load->view('v_upload_sukses', $data);
-// 	}
-// }
 
 
 			}
