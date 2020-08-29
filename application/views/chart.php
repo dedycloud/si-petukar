@@ -1,5 +1,5 @@
-<script src="<?php  echo base_url(); ?>assets/highcart/jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="<?php  echo base_url(); ?>assets/highcart/highcharts.js" type="text/javascript"></script>
+<script src="<?php  echo base_url(); ?>asset/highcart/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="<?php  echo base_url(); ?>asset/highcart/highcharts.js" type="text/javascript"></script>
 <script type="text/javascript">
  var chart1; // globally available
  $(document).ready(function() {

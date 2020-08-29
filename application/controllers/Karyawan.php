@@ -170,7 +170,7 @@ class karyawan extends CI_Controller {
 							"file" => $_data['upload_data']['file_name']
 						);
 						$this->m_karyawan->update_modul_task($data, $id_modul, 'tbl_modul_tugas');
-// update terbaru
+					// update terbaru
 						$chek = $this->m_karyawan->check_task_modul($id_tugas);
 						if($chek->jmlh == 0){
 						$body = array(

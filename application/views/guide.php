@@ -114,6 +114,65 @@
       </div>
       <!-- /.row -->
       <?php  }elseif($this->ion_auth->in_group('karyawan')) { ?>
+      <!--           <div class="pull-right"><a class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_add_new"> Add New</a></div>       
+<!-- ============ MODAL ADD BARANG =============== -->
+        <div class="modal fade" id="modal_add_new" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h3 class="modal-title" id="myModalLabel">Add New Barang</h3>
+            </div>
+            <form class="form-horizontal" method="post" action="<?php echo base_url().'index.php/barang/simpan_barang'?>">
+                <div class="modal-body">
+ 
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Kode Barang</label>
+                        <div class="col-xs-8">
+                            <input name="kode_barang" class="form-control" type="text" placeholder="Kode Barang..." required>
+                        </div>
+                    </div>
+ 
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Nama Barang</label>
+                        <div class="col-xs-8">
+                            <input name="nama_barang" class="form-control" type="text" placeholder="Nama Barang..." required>
+                        </div>
+                    </div>
+ 
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Satuan</label>
+                        <div class="col-xs-8">
+                             <select name="satuan" class="form-control" required>
+                                <option value="">-PILIH-</option>
+                                <option value="Unit">Unit</option>
+                                <option value="Kotak">Kotak</option>
+                                <option value="Botol">Botol</option>
+                                <option value="Sachet">Sachet</option>
+                                <option value="Pcs">Pcs</option>
+                                <option value="Dus">Dus</option>
+                             </select>
+                        </div>
+                    </div>
+ 
+                    <div class="form-group">
+                        <label class="control-label col-xs-3" >Harga</label>
+                        <div class="col-xs-8">
+                            <input name="harga" class="form-control" type="text" placeholder="Harga..." required>
+                        </div>
+                    </div>
+ 
+                </div>
+ 
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Tutup</button>
+                    <button class="btn btn-info">Simpan</button>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
+        <!--END MODAL ADD BARANG-->
       	 <div class="row">
         <div class="col-md-12">
           <!-- The time line -->
@@ -206,7 +265,7 @@
           </ul>
         </div>
         <!-- /.col -->
-      </div>
+      </div> -->
       <?php  }elseif($this->ion_auth->in_group('project_manager')) { ?>
       	 <div class="row">
         <div class="col-md-12">

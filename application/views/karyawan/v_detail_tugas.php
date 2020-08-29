@@ -20,6 +20,8 @@
         <div class="box">
           <div class="box-header">
             <h3 class="box-title">Detail Task</h3>
+
+ 
           </div>
           <!-- /.box-header -->
           <div class="box-body">
@@ -193,12 +195,12 @@ else if ($status == 'success') { ?>
             <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-outline pull-right" >Submit</button>
           </div>
-        </div>
-      </form>
+              </form>
       <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
   </div> 
+    </div> 
 <?php endforeach ?>
 
 <?php $no = 1; foreach ($view_detail_modul as $row): ?>
@@ -223,9 +225,10 @@ else if ($status == 'success') { ?>
             <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-outline pull-right" >Submit</button>
           </div>
-        </div>
+       
       </form>
       <!-- /.modal-content -->
+     </div>
     </div>
     <!-- /.modal-dialog -->
   </div> 
