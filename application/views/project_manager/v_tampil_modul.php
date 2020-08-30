@@ -40,8 +40,8 @@
                 <td><?php echo $u->nama ?></td>
                 <td><?php echo $u->deskripsi ?></td>
              <td>
-              <?php echo anchor('projectmanager/edit_task/'.$u->id,'edit'); ?>
-              <?php echo anchor('projectmanager/hapus_task/'.$u->id,'hapus'); ?>
+              <?php echo anchor('projectmanager/edit_modul/'.$u->id_divisi.'/'.$u->divisi,'edit'); ?>
+              <?php echo anchor('projectmanager/hapus_modul/'.$u->id_divisi.'/'.$u->divisi,'hapus'); ?>
 
 
             </td>

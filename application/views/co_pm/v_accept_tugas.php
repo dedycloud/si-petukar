@@ -16,46 +16,35 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-     
-
           <div class="box">
             <div class="box-header">
-              
             <h3 class="box-title">Accep tugas</h3>
-
             	<!-- <a  href="<?php echo base_url() ; ?>managerunit/tambahtugas" ><span class="btn  btn-xs btn-primary  glyphicon-plus" > Create Tugas</a> -->
-
             </div>
-
             <div class="col-md-12" >
-  <div class="col-md-4">
-  <table  class="  table table-condensed " >
+            <div class="col-md-4">
+            <table  class="  table table-condensed " >
 									<tr>
 										<td><b>Penyetuju </b></td>
 										<td>:</td>
 										<td> <b><?= $user->username ; ?></b></td>
 									</tr>
-					
                   <tr>
 										<td><b>Tanggal Hari ini </b></td>
 										<td>:</td>
 										<td><?= date("d M Y",strtotime(date("Y-m-d h:i:s"))) ; ?></td>
 									</tr>
-						
                   <tr>
 										<td></td>
 										<td></td>
 										<td> </td>
 									</tr>
-							
 								</table>
-
   </div>
   <div class="col-md-8">
   </div>
             </div>
             <div class="box-body">
-
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -66,12 +55,9 @@
                   <th>Jenis</th>
                   <th>Status</th>
                   <th>Action</th>
-                 
-                 
                 </tr>
                 </thead>
                 <tbody>
-            
                <?php 
                 $no = 1;
                 foreach($accept_tugas as $u){ 
@@ -81,7 +67,13 @@
                 <td><?php echo $u->id_tujuan?></td>
                 <td><?php echo $u->judul_tugas?></td>
                 <td><?= date("d M Y",strtotime($u->jangka_waktu )) ; ?></td>
-                <td><?php echo $u->id_jenis?></td>
+                <td><?php if($u->id_jenis == '1') { ?>
+                      new task
+                    <?php } else { ?>
+                      job deskription
+                    <?php } ?>
+                    
+                  </td>
                 <td><?php if($u->status == 'failed' ) { ?> 
                   <span class="badge btn-danger">failed</span>
                   <?php } else if($u->status == 'proccess' ) { ?> 

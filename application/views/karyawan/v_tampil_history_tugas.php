@@ -77,36 +77,42 @@
 										<td><?php echo $no++ ?></td>
 										<td><?php echo $u->judul_tugas?></td>
 										<td><?= date("d M Y",strtotime($u->jangka_waktu )) ; ?>    </td>
-										<td><?php echo $u->id_jenis?></td>
-										<td><?php if($u->status_success == 'success' ) { ?> 
-											<span class="badge btn-success">success</span>
-											
-										<?php } ?>
+										<td><?php if($u->id_jenis == '1') { ?>
+											new task
+										<?php } else { ?>
+											job deskription
+										<?php	} ?>
+										
 									</td>
-
-									<td>
-
-										<form class="form-horizontal"action="<?php echo base_url(). 'karyawan/detail/'.$u->id. '/'.$u->id_jenis; ?>" method="post">
-											<input type="hidden" name="id" value="<?php echo $u->id; ?>" />
-											<button type="submit" class="btn btn-outline pull-right" >Detail</button>
-										</div>
-									</form>
-									<!-- nama file, itu nama buat action nya -->
-									<?php echo anchor('karyawan/'.$u->id.''.$u->id_jenis,'detail'); ?>
-									
+									<td><?php if($u->status_success == 'success' ) { ?> 
+										<span class="badge btn-success">success</span>
+										
+									<?php } ?>
 								</td>
 
-							</tr>
-						<?php } ?>
-					</tbody>
-					
-				</table>
-			</div>
-			<!-- /.box-body -->
+								<td>
+
+									<form class="form-horizontal"action="<?php echo base_url(). 'karyawan/detail/'.$u->id. '/'.$u->id_jenis; ?>" method="post">
+										<input type="hidden" name="id" value="<?php echo $u->id; ?>" />
+										<button type="submit" class="btn btn-outline pull-right" >Detail</button>
+									</div>
+								</form>
+								<!-- nama file, itu nama buat action nya -->
+								<?php echo anchor('karyawan/'.$u->id.''.$u->id_jenis,'detail'); ?>
+								
+							</td>
+
+						</tr>
+					<?php } ?>
+				</tbody>
+				
+			</table>
 		</div>
-		<!-- /.box -->
+		<!-- /.box-body -->
 	</div>
-	<!-- /.col -->
+	<!-- /.box -->
+</div>
+<!-- /.col -->
 </div>
 <!-- /.row -->
 </section>

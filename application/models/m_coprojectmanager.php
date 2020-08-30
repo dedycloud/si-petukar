@@ -23,7 +23,7 @@ class M_coprojectmanager extends CI_Model{
 	}
 
 	function detail_modul_task($id, $id_tugas, $id_jenis){
-	$sql=" select b.id as id, b.status as status , a.judul_tugas as modul ,c.deskripsi as detail_modul from tbl_tugas as a , tbl_modul_tugas as b, tbl_modul as c where a.id_jenis='$id_jenis' and a.id='$id_tugas' and a.id_penyetuju ='$id' and a.id=b.id_tugas and  b.id_modul = c.id";
+	$sql=" select b.id as id,b.file, b.status as status , a.judul_tugas as modul ,c.deskripsi as detail_modul from tbl_tugas as a , tbl_modul_tugas as b, tbl_modul as c where a.id_jenis='$id_jenis' and a.id='$id_tugas' and a.id_penyetuju ='$id' and a.id=b.id_tugas and  b.id_modul = c.id";
 		$result = $this->db->query($sql);
 		return $result->result_array();	
 	}

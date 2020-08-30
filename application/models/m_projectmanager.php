@@ -21,9 +21,15 @@ class M_projectmanager extends CI_Model{
 		$result = $this->db->query($sql);
 		return $result->result_array();	
 	}
+		function detail_modul($id, $id_tugas, $id_jenis){
+	$sql=" select b.id_tugas as id_tugas, b.id as id, b.status as status, b.file as file , a.judul_tugas as modul ,c.deskripsi as detail_modul from tbl_tugas as a , tbl_modul_tugas as b, tbl_modul as c where a.id_jenis='$id_jenis' and a.id='$id_tugas' and a.id_tujuan ='$id' and a.id=b.id_tugas and  b.id_modul = c.id";
+
+		$result = $this->db->query($sql);
+		return $result->result_array();	
+	}
 
 	function tampil_all_modul_by_divisi($divisi){
-		$sql=" SELECT * FROM `tbl_modul`as a, tbl_bagian as b WHERE a.divisi = b.id and a.divisi = '$divisi'";
+		$sql=" SELECT *,a.id as id_divisi FROM `tbl_modul`as a, tbl_bagian as b WHERE a.divisi = b.id and a.divisi = '$divisi'";
 
 		$result = $this->db->query($sql);
 		return $result->result();	
@@ -62,6 +68,13 @@ class M_projectmanager extends CI_Model{
 		return $result->result_array();
 	}
 
+	function edit_modul($id_task,$divisi){
+		$sql=" select * from tbl_modul where id = '$id_task' and divisi = $divisi";
+
+		$result = $this->db->query($sql);
+		return $result->result_array();
+	}
+
 	function update_data($id_task, $data, $table){
 
 		$this->db->where('id', $id_task);
@@ -72,6 +85,13 @@ class M_projectmanager extends CI_Model{
 	function hapus_data($id_task){
 
 		$sql="delete from tbl_tugas where id=$id_task";
+		$result = $this->db->query($sql);
+		return $result;
+
+	}
+	function hapus_modul($id_task,$divisi){
+
+		$sql="delete from tbl_modul where id=$id_task and divisi = $divisi";
 		$result = $this->db->query($sql);
 		return $result;
 

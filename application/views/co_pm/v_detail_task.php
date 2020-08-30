@@ -11,7 +11,6 @@
         <li class="active">Data tables</li>
       </ol>
     </section>
-
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -30,7 +29,6 @@
               <table class="table table-condensed">
                 <tr>
                   <th style="width: 10px"></th>
-                  
                 </tr>
                 <tr>
                   <td></td>
@@ -98,7 +96,6 @@
                   <th style="width: 40px">Label</th>
                 </tr>
                 <?php $no = 1; foreach ($view_detail_tugas as $row): ?>
-
                 <tr>
                   <td><?php echo $no++ ?></td>
                   <td><?= $row['deskripsi_tugas']; ?></td>
@@ -107,9 +104,7 @@
                 Launch Info Modal
               </button> </td>
                 </tr>
-               
               <?php endforeach ?>
-
               </table>
             </div>
                 <?php } 

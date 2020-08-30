@@ -275,11 +275,15 @@ class Projectmanager extends CI_Controller {
 		redirect('projectmanager/tampil_create_task');
 	}
 
-	public function detail_create_task($id_detail)
+	public function detail_create_task($id_detail=0,$status = 0,$id_jenis = 0,$id_tujuan=0)
 	{
 		$this->secure();
 		$data['view_detail_tugas'] = $this->m_projectmanager->detail_create_task($id_detail);
 		$data['user'] = $this->ion_auth->user()->row();
+		$data['id_jenis'] = $id_jenis;
+		$data['status'] = $status;
+		$data['view_detail_modul'] = $this->m_projectmanager->detail_modul($id_tujuan, $id_detail, $id_jenis);
+
 		$username=$data['user']->username;
 		$group=$this->ion_auth->get_users_groups()->row()->id;
 		$data['group']=$group;
@@ -290,7 +294,7 @@ class Projectmanager extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	public function edit_task($id_task)
+	public function edit_task($id_task )
 	{
 		$this->secure();
 
@@ -303,6 +307,22 @@ class Projectmanager extends CI_Controller {
 		$this->load->view('navigation');
 		$this->load->view('sidebar',$data);
 		$this->load->view('project_manager/v_edit_tugas',$data);
+		$this->load->view('footer');
+	}
+
+	public function edit_modul($id_task =0,$divisi =0)
+	{
+		$this->secure();
+		$data['divisi'] =$this->m_projectmanager->tampil_all_divisi();
+		$data['view_edit_modul'] = $this->m_projectmanager->edit_modul($id_task,$divisi);
+		$data['user'] = $this->ion_auth->user()->row();
+		$username=$data['user']->username;
+		$group=$this->ion_auth->get_users_groups()->row()->id;
+		$data['group']=$group;
+		$this->load->view('header',$data);
+		$this->load->view('navigation');
+		$this->load->view('sidebar',$data);
+		$this->load->view('project_manager/v_edit_modul',$data);
 		$this->load->view('footer');
 	}
 
@@ -337,6 +357,14 @@ class Projectmanager extends CI_Controller {
 		$this->secure();
 		$this->m_projectmanager->hapus_data($id_task);
 		redirect('projectmanager/tampil_create_task');
+
+	}
+
+	public function hapus_modul($id_task =0,$divisi = 0)
+	{
+		$this->secure();
+		$this->m_projectmanager->hapus_modul($id_task,$divisi);
+		redirect('projectmanager/tampil_modul');
 
 	}
 }
