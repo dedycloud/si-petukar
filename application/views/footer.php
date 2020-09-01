@@ -59,6 +59,11 @@
 <script src="<?php echo base_url(); ?>asset/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>asset/dist/js/demo.js"></script>
+<script type="text/javascript">window.setTimeout(function() {
+    $(".alert").fadeTo(300, 0).slideUp(300, function(){
+        $(this).remove(); 
+    });
+}, 1500);</script>
 <script>
   $(function () {
     $('#example1').DataTable()

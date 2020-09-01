@@ -144,6 +144,8 @@ class karyawan extends CI_Controller {
 						);
 						
 						$this->m_karyawan->submit_task($data,$id_task,'tbl_tugas');
+						$this->session->set_flashdata('flashdatasubmit', 'Tugas selesai di kerjakan ');
+
 						redirect('karyawan/tampil_task');
 					}	
 					
@@ -181,6 +183,8 @@ class karyawan extends CI_Controller {
 						$this->m_karyawan->submit_task($body,$id_tugas,'tbl_tugas');
 
 						}
+												$this->session->set_flashdata('flashdatasubmit', 'Tugas selesai di kerjakan ');
+
 						// update terbaaru
 						redirect('karyawan/tampil_task');
 					}

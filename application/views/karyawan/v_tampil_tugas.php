@@ -21,6 +21,14 @@
         <div class="box">
           <div class="box-header">
             <h3 class="box-title">Data Table With Full Features</h3>
+                <?php if($this->session->flashdata('flashdatasubmit') ) : ?>
+      <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">
+          <i class="ace-icon fa fa-times"></i>
+        </button>
+        <?= $this->session->flashdata('flashdatasubmit'); ?>
+      </div> 
+    <?php endif; ?>
           </div>
 
 
@@ -67,11 +75,13 @@
           </div>
           <div class="col-md-4">
           </div>
+
         </div>
 
 
         <!-- /.box-header -->
         <div class="box-body">
+
           <table id="example1" class="table table-bordered table-striped">
             <thead>
               <tr>

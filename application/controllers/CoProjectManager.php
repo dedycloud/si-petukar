@@ -127,6 +127,8 @@ class Coprojectmanager extends CI_Controller {
 			"update_by" =>  $createby
 			);
 		$this->m_coprojectmanager->accept_task($data,$id_task,'tbl_tugas');
+		      $this->session->set_flashdata('flashdataaccept', 'Tugas telah berhasil di verifikasi ');
+
 		redirect('Coprojectmanager/tampil_accept_task');
 		}
 
@@ -144,6 +146,8 @@ class Coprojectmanager extends CI_Controller {
 
 			);
 		$this->m_coprojectmanager->rejected_task($data,$id_task,'tbl_tugas');
+		      $this->session->set_flashdata('flashdatareject', 'Tugas telah berhasil di reject ');
+
 		redirect('Coprojectmanager/tampil_accept_task');
 		}
 

@@ -205,6 +205,7 @@ class Projectmanager extends CI_Controller {
 			"created_by" =>  $createby
 		);
 		$this->m_projectmanager->input_data($data,'tbl_tugas');
+		$this->session->set_flashdata('flashdatatambah', 'Data berhasil di tambah');
 		redirect('projectmanager/tampil_create_task');
 	}
 
@@ -225,6 +226,8 @@ class Projectmanager extends CI_Controller {
 		
 		);
 		$this->m_projectmanager->input_data($data,'tbl_modul');
+		$this->session->set_flashdata('flashdatatambah', 'Data berhasil di tambah');
+
 		redirect('projectmanager/tampil_modul');
 	}
 
@@ -271,6 +274,7 @@ class Projectmanager extends CI_Controller {
 			$index++;
 		}
 		$this->m_projectmanager->input_data_modul($insertModul,'tbl_modul_tugas');
+		$this->session->set_flashdata('flashdatatambah', 'Data berhasil di tambah');
 
 		redirect('projectmanager/tampil_create_task');
 	}
@@ -349,6 +353,8 @@ class Projectmanager extends CI_Controller {
 			"update_by" =>  $updateby
 		);
 		$this->m_projectmanager->update_data($id,$data,'tbl_tugas');
+				$this->session->set_flashdata('flashdatatambah', 'Data berhasil di update');
+
 		redirect('projectmanager/tampil_create_task');
 	}
 
@@ -356,6 +362,8 @@ class Projectmanager extends CI_Controller {
 	{
 		$this->secure();
 		$this->m_projectmanager->hapus_data($id_task);
+				$this->session->set_flashdata('flashdatadelete', 'Data berhasil di hapus');
+
 		redirect('projectmanager/tampil_create_task');
 
 	}
@@ -364,6 +372,8 @@ class Projectmanager extends CI_Controller {
 	{
 		$this->secure();
 		$this->m_projectmanager->hapus_modul($id_task,$divisi);
+      $this->session->set_flashdata('flashdatadelete', 'Data berhasil di hapus');
+
 		redirect('projectmanager/tampil_modul');
 
 	}

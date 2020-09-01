@@ -20,6 +20,22 @@
             <div class="box-header">
             <h3 class="box-title">Accep tugas</h3>
             	<!-- <a  href="<?php echo base_url() ; ?>managerunit/tambahtugas" ><span class="btn  btn-xs btn-primary  glyphicon-plus" > Create Tugas</a> -->
+                 <?php if($this->session->flashdata('flashdataaccept') ) : ?>
+      <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">
+          <i class="ace-icon fa fa-times"></i>
+        </button>
+        <?= $this->session->flashdata('flashdataaccept'); ?>
+      </div> 
+    <?php endif; ?>
+     <?php if($this->session->flashdata('flashdatareject') ) : ?>
+      <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">
+          <i class="ace-icon fa fa-times"></i>
+        </button>
+        <?= $this->session->flashdata('flashdatareject'); ?>
+      </div> 
+    <?php endif; ?>
             </div>
             <div class="col-md-12" >
             <div class="col-md-4">

@@ -25,7 +25,22 @@
 							<i class="fa fa-edit"></i> Create Modul
 						</a>
 
-
+  <?php if($this->session->flashdata('flashdatatambah') ) : ?>
+      <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">
+          <i class="ace-icon fa fa-times"></i>
+        </button>
+        <?= $this->session->flashdata('flashdatatambah'); ?>
+      </div> 
+    <?php endif; ?>
+     <?php if($this->session->flashdata('flashdatadelete') ) : ?>
+      <div class="alert alert-warning alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">
+          <i class="ace-icon fa fa-times"></i>
+        </button>
+        <?= $this->session->flashdata('flashdatadelete'); ?>
+      </div> 
+    <?php endif; ?>
 					</div>
 
 
