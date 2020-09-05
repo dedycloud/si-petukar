@@ -16,7 +16,7 @@ class M_projectmanager extends CI_Model{
 	}
 
 	function tampil_karyawan_baru(){
-		$sql="SELECT m.username, p.nama_bagian FROM users as m ,groups as n, users_groups as o ,tbl_bagian as p  WHERE m.id = o.user_id and n.id =o.group_id and m.email NOT IN(SELECT c.email FROM users as c,tbl_tugas as a WHERE a.id_jenis ='2' AND c.id=a.id_tujuan group BY c.id ) and m.id_bagian = p.id and n.id = 3 GROUP BY m.id";
+		$sql="SELECT m.username, p.nama_bagian FROM users as m ,groups as n, users_groups as o ,tbl_bagian as p  WHERE m.id = o.user_id and n.id =o.group_id and m.email NOT IN(SELECT c.email FROM users as c,tbl_tugas as a WHERE a.id_jenis ='2' AND c.id=a.id_tujuan group BY c.id ) and m.id_bagian = p.id and n.id = 3 GROUP BY m.id ";
 
 		$result = $this->db->query($sql);
 		return $result->result();	
@@ -105,7 +105,7 @@ class M_projectmanager extends CI_Model{
 
 	}
 	function tampil_create_task($id){
-		$sql=" SELECT a.*, b.username FROM tbl_tugas as a, users as b where a.created_by = b.id and a.created_by = '$id'";
+		$sql=" SELECT a.*, b.username FROM tbl_tugas as a, users as b where a.created_by = b.id and a.created_by = '$id'  ORDER BY a.id DESC";
 
 		$result = $this->db->query($sql);
 		return $result->result();	

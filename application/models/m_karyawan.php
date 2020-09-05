@@ -2,7 +2,7 @@
  
 class M_karyawan extends CI_Model{
 	function tampil_task($id){
-	$sql=" SELECT a.*, b.username ,c.jenis_tugas FROM tbl_tugas as a, users as b ,tbl_jenis_tugas as c where a.id_tujuan = b.id and a.id_tujuan = '$id' and a.status NOT LIKE 'success' and a.id_jenis = c.id ";
+	$sql=" SELECT a.*, b.username ,c.jenis_tugas FROM tbl_tugas as a, users as b ,tbl_jenis_tugas as c where a.id_tujuan = b.id and a.id_tujuan = '$id' and a.status NOT LIKE 'success' and a.id_jenis = c.id  ORDER BY a.id DESC";
 		$result = $this->db->query($sql);
 		return $result->result();	
 	}
