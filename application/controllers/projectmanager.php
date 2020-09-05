@@ -142,6 +142,7 @@ class Projectmanager extends CI_Controller {
 		$this->load->view('header',$data);
 		$this->load->view('navigation');
 		$this->load->view('sidebar',$data);
+
 		$this->load->view('project_manager/v_tambah_tugas',$data);
 		$this->load->view('footer');
 	}
@@ -191,6 +192,7 @@ class Projectmanager extends CI_Controller {
 		$deskripsi = $this->input->post('deskripsi');
 		$jenis = $this->input->post('jenis');
 		$createby = $this->session->userdata('user_id'); 
+			// $this->form_validation->set_rules('judul_tugas','Judul','required');
 
 		$data = array(
 			

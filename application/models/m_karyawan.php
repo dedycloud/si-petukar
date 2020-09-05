@@ -12,6 +12,11 @@ function tampil_history_task($id){
 		$result = $this->db->query($sql);
 		return $result->result();	
 	}
+	function tampil_history_success($id_tugas){
+	$sql=" SELECT *, c.username FROM `history_tugas` as a,tbl_jenis_tugas as b, users as c WHERE a.id = '$id_tugas' AND a.status_success = 'success' AND a.id_jenis = b.id AND a.tujuan =c.id";
+		$result = $this->db->query($sql);
+		return $result->result();	
+	}
 
 	function detail_task($id, $id_tugas){
 	$sql=" SELECT a.*, b.username, c.jenis_tugas FROM tbl_tugas as a, users as b, tbl_jenis_tugas as c where a.id_jenis = c.id and a.id_tujuan = b.id and a.id ='$id_tugas' and a.id_tujuan = '$id'";

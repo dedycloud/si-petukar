@@ -20,8 +20,12 @@
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
+              <h3 class="box-title">Data User</h3>
+
             </div>
+              <a  href="<?php echo base_url() ; ?>admin/tambahuser" class="btn btn-app">
+              <i class="fa fa-edit"></i> Create User 
+            </a>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">

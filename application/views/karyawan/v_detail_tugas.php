@@ -21,7 +21,7 @@
           <div class="box-header">
             <h3 class="box-title">Detail Task</h3>
 
- 
+
           </div>
           <!-- /.box-header -->
           <div class="box-body">
@@ -90,7 +90,7 @@
           </div>
         <?php endforeach ?>
 
- 
+
         <div class="box-header">
 
           <?php if ($id_jenis == 1){ ?>
@@ -116,9 +116,17 @@
                  <a href="<?php echo base_url(); ?>upload/<?= $row['dokumen']; ?>" target="_blank"> <?= $row['dokumen']; ?></a>
                <?php } ?>
              </td>
-             <td> <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-info<?php echo $row['id']; ?>">
-              Kerjakan
-            </button> </td>
+             <td>
+              <?php if( $row['status'] == 'available' || $row['status'] == 'proccess' || $row['status'] == 'failed' ) { ?>  
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-info<?php echo $row['id']; ?>">
+                  Kerjakan
+                </button>
+              <?php } else  if( $row['status'] == 'success') { ?>  
+                <b>terferivikasi</b>
+              <?php } else  { ?>  
+                <b>Waiting</b>
+              <?php } ?>  
+            </td>
           </tr>
 
         <?php endforeach ?>
@@ -153,9 +161,18 @@
 
      </td>
      <td><?= $row['status']; ?></td>
-     <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal<?php echo $row['id']; ?>">
-      Kerjakan
-    </button> </td>
+     <td>
+
+      <?php if( $row['status'] == 'available' || $row['status'] == 'proccess' || $row['status'] == 'failed' ) { ?>  
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal<?php echo $row['id']; ?>">
+          Kerjakan
+        </button>
+      <?php } else  if( $row['status'] == 'success') { ?>  
+        <b>uploaded</b>
+      <?php } else  { ?>  
+        <b>Waiting</b>
+      <?php } ?>  
+    </td>
   </tr>
 
   <?php endforeach ?>`
@@ -195,12 +212,12 @@ else if ($status == 'success') { ?>
             <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-outline pull-right" >Submit</button>
           </div>
-              </form>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div> 
+        </form>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
     </div> 
+  </div> 
 <?php endforeach ?>
 
 <?php $no = 1; foreach ($view_detail_modul as $row): ?>
@@ -225,10 +242,10 @@ else if ($status == 'success') { ?>
             <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-outline pull-right" >Submit</button>
           </div>
-       
-      </form>
-      <!-- /.modal-content -->
-     </div>
+
+        </form>
+        <!-- /.modal-content -->
+      </div>
     </div>
     <!-- /.modal-dialog -->
   </div> 

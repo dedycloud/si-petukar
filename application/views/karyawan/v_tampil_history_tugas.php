@@ -98,7 +98,7 @@
 									</div>
 								</form>
 								<!-- nama file, itu nama buat action nya -->
-								<?php echo anchor('karyawan/'.$u->id.''.$u->id_jenis,'detail'); ?>
+								<?php echo anchor('karyawan/detail_history/'.$u->id.'','detail'); ?>
 								
 							</td>
 

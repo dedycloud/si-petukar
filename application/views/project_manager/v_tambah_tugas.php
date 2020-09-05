@@ -78,7 +78,7 @@
 
                     </div>
                   </div>
-
+<!--  <?php echo form_error('judul'); ?> -->
                   <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Deskripsi Tugas</label>
 

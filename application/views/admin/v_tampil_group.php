@@ -16,12 +16,30 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-     
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
+              <h3 class="box-title">Data group user</h3>
             </div>
+              <a  href="<?php echo base_url() ; ?>admin/tampil_tambah_group" class="btn btn-app">
+              <i class="fa fa-edit"></i> Create group 
+            </a>
+               <?php if($this->session->flashdata('flashdatatambah') ) : ?>
+              <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert">
+                  <i class="ace-icon fa fa-times"></i>
+                </button>
+                <?= $this->session->flashdata('flashdatatambah'); ?>
+              </div> 
+            <?php endif; ?>
+            <?php if($this->session->flashdata('flashdatadelete') ) : ?>
+              <div class="alert alert-warning alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert">
+                  <i class="ace-icon fa fa-times"></i>
+                </button>
+                <?= $this->session->flashdata('flashdatadelete'); ?>
+              </div> 
+            <?php endif; ?>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -49,8 +67,8 @@
              
 
                 <td>
-                 <?php echo anchor('admin/editgroup/'.$u->id,'edit'); ?>
-                 <?php echo anchor('admin/hapusgroup/'.$u->id,'Hapus'); ?>
+                 <?php echo anchor('admin/tampil_edit_group/'.$u->id,'edit'); ?>
+                 <?php echo anchor('admin/hapus_groups/'.$u->id,'Hapus'); ?>
                </td>
            </tr>
                   <?php } ?>

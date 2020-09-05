@@ -48,6 +48,19 @@ class Admin extends CI_Controller {
 		$this->load->view('chart.php',$data);
 		$this->load->view('footer');
 	}
+	public function guide()
+	{
+		$this->secure();
+		$data['user'] = $this->ion_auth->user()->row();
+		$username=$data['user']->username;
+		$group=$this->ion_auth->get_users_groups()->row()->id;
+		$data['group']=$group;
+		$this->load->view('header',$data);
+		$this->load->view('navigation');
+		$this->load->view('sidebar',$data);
+		$this->load->view('guide');
+		$this->load->view('footer');
+	}
 
 	public function tampil_user()
 	{
@@ -95,4 +108,149 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/v_tampil_bagian',$data);
 		$this->load->view('footer');
 	}
+	public function hapus_groups($id)
+	{
+		$this->secure();
+		$this->m_admin->hapus_groups($id);
+				$this->session->set_flashdata('flashdatadelete', 'Data berhasil di hapus');
+
+		redirect('admin/tampil_group');
+
+	}
+
+	public function tampil_tambah_group()
+	{
+		$this->secure();
+		$data['user'] = $this->ion_auth->user()->row();
+		$username=$data['user']->username;
+		$group=$this->ion_auth->get_users_groups()->row()->id;
+		$data['group']=$group;
+		$this->load->view('header',$data);
+		$this->load->view('navigation');
+		$this->load->view('sidebar',$data);
+		$this->load->view('admin/tambah_groups',$data);
+		$this->load->view('footer');
+	}
+	public function tampil_tambah_bagian()
+	{
+		$this->secure();
+		$data['user'] = $this->ion_auth->user()->row();
+		$username=$data['user']->username;
+		$group=$this->ion_auth->get_users_groups()->row()->id;
+		$data['group']=$group;
+		$this->load->view('header',$data);
+		$this->load->view('navigation');
+		$this->load->view('sidebar',$data);
+		$this->load->view('admin/tambah_bagian',$data);
+		$this->load->view('footer');
+	}
+
+
+		public function hapus_bagian($id)
+	{
+		$this->secure();
+		$this->m_admin->hapus_bagian($id);
+				$this->session->set_flashdata('flashdatadelete', 'Data berhasil di hapus');
+
+		redirect('admin/tampil_list_bagian');
+
+	}
+
+
+	public function actiontambahgroups()
+	{
+		
+		$nama = $this->input->post('nama_group');
+		$deskripsi = $this->input->post('deskripsi');
+
+		$data = array(
+			'name' => $nama,
+			'description' => $deskripsi,
+		
+		);
+		$this->m_admin->save_data($data,'groups');
+		$this->session->set_flashdata('flashdatatambah', 'Data berhasil di tambah');
+
+		redirect('admin/tampil_group');
+	}
+
+	public function actiontambahbagian()
+	{
+		
+		$nama = $this->input->post('nama_bagian');
+
+		$data = array(
+			'nama_bagian' => $nama		
+		);
+		$this->m_admin->save_data($data,'tbl_bagian');
+		$this->session->set_flashdata('flashdatatambah', 'Data berhasil di tambah');
+		redirect('admin/tampil_list_bagian');
+	}
+
+
+public function tampil_edit_group($id)
+	{
+		$this->secure();
+		 $data['groups'] = $this->m_admin->get_group_by_id($id);
+
+		$data['user'] = $this->ion_auth->user()->row();
+		$username=$data['user']->username;
+		$group=$this->ion_auth->get_users_groups()->row()->id;
+		$data['group']=$group;
+		$this->load->view('header',$data);
+		$this->load->view('navigation');
+		$this->load->view('sidebar',$data);
+		$this->load->view('admin/v_edit_groups',$data);
+		$this->load->view('footer');
+	}
+	public function tampil_edit_bagian($id)
+	{
+		$this->secure();
+		 $data['bagian'] = $this->m_admin->get_bagian_by_id($id);
+		$data['user'] = $this->ion_auth->user()->row();
+		$username=$data['user']->username;
+		$group=$this->ion_auth->get_users_groups()->row()->id;
+		$data['group']=$group;
+		$this->load->view('header',$data);
+		$this->load->view('navigation');
+		$this->load->view('sidebar',$data);
+		$this->load->view('admin/v_edit_bagian',$data);
+		$this->load->view('footer');
+	}
+
+	public function actioneditgroup()
+	{
+
+		$name = $this->input->post('nama_group');
+		$deskripsi = $this->input->post('deskripsi');
+		// $updateby = $this->session->userdata('user_id'); 
+		$id = $this->input->post('id');
+		$data = array(
+
+			'name' => $name,
+			'description' => $deskripsi
+		);
+		$this->m_admin->update_data($id,$data,'groups');
+		$this->session->set_flashdata('flashdatatambah', 'Data berhasil di update');
+
+		redirect('admin/tampil_group');
+	}
+
+public function actioneditbagian()
+	{
+
+		$name = $this->input->post('nama_bagian');
+		// $updateby = $this->session->userdata('user_id'); 
+		$id = $this->input->post('id');
+		$data = array(
+
+			'nama_bagian' => $name
+			);
+		$this->m_admin->update_data($id,$data,'tbl_bagian');
+		$this->session->set_flashdata('flashdatatambah', 'Data berhasil di update');
+
+		redirect('admin/tampil_list_bagian');
+	}
+
+
 }

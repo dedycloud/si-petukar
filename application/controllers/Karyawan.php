@@ -83,6 +83,21 @@ class karyawan extends CI_Controller {
 		$this->load->view('karyawan/v_tampil_history_tugas',$data);
 		$this->load->view('footer');
 	}
+	public function detail_history($id=0)
+	{
+		$this->secure();
+		// $id = $this->session->userdata('user_id'); 
+		$data['view_tampil_tugas'] = $this->m_karyawan->tampil_history_success($id);
+		$data['user'] = $this->ion_auth->user()->row();
+		$username=$data['user']->username;
+		$group=$this->ion_auth->get_users_groups()->row()->id;
+		$data['group']=$group;
+		$this->load->view('header',$data);
+		$this->load->view('navigation');
+		$this->load->view('sidebar',$data);
+		$this->load->view('karyawan/v_detail_history',$data);
+		$this->load->view('footer');
+	}
 
 	public function detail($id_tugas = 0 ,$status = 0,$id_jenis = 0)
 	{

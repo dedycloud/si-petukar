@@ -58,11 +58,17 @@
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url(); ?>admin/tampil_user"><i class="fa fa-circle-o"></i>List User</a></li>
             <li><a href="<?php echo base_url(); ?>admin/tampil_group"><i class="fa fa-circle-o"></i>List Group</a></li>
-            <li><a href="<?php echo base_url(); ?>admin/tampil_list_bagian"><i class="fa fa-circle-o"></i>List Bagian</a></li>
+            
 
 
           </ul>
+         <li><a href="<?php echo base_url(); ?>admin/tampil_list_bagian"><i class="fa fa-circle-o"></i>List Bagian</a></li>
+          <li>  <a href="<?php echo base_url(); ?>admin/guide">
+            <i class="fa fa-th"></i> <span>Guide</span>
+            
+          </a></li>
         </li>
+
         
       <?php  }elseif($this->ion_auth->in_group('karyawan')) { ?>
         <li>

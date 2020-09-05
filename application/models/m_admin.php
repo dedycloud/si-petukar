@@ -12,4 +12,36 @@ class M_admin extends CI_Model{
 	function tampil_list_bagian(){
 		return $this->db->get('tbl_bagian');
 	}
+
+	function get_bagian_by_id($id){
+		$sql=" SELECT * from tbl_bagian where id = '$id'";
+		$result = $this->db->query($sql);
+		return $result->result();	
+	}
+	function get_group_by_id($id){
+		$sql="SELECT * from groups where id = '$id'";
+		$result = $this->db->query($sql);
+		return $result->result();	
+	}
+
+	function hapus_groups($id){
+		$sql="delete from groups where id=$id ";
+		$result = $this->db->query($sql);
+		return $result;
+	}
+		function hapus_Bagian($id){
+		$sql="delete from tbl_bagian where id=$id ";
+		$result = $this->db->query($sql);
+		return $result;
+	}
+
+	function save_data($data,$table){
+		$this->db->insert($table,$data);
+	}
+
+
+	function update_data( $id,$data, $table){
+	$this->db->where('id', $id);
+   $this->db->update($table, $data);
+	}
 }
