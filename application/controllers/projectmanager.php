@@ -152,6 +152,7 @@ class Projectmanager extends CI_Controller {
 		$this->secure();
 
 		$data['tujuan'] =$this->m_projectmanager->get_data_tujuan();
+		$data['karyawan'] =$this->m_projectmanager->tampil_karyawan_baru();
 		$data['penyetuju'] =$this->m_projectmanager->get_data_penyetuju();
 		$data['jenis'] =$this->m_projectmanager->get_data_jenis();
 		$data['modul'] =$this->m_projectmanager->get_data_modul();

@@ -2,7 +2,25 @@
  
 class M_admin extends CI_Model{
 	function tampil_data(){
-		return $this->db->get('users');
+		// return $this->db->get('users');
+			$sql=" SELECT * ,a.id as id_user from users as a, tbl_bagian as b where a.id_bagian = b.id ";
+		$result = $this->db->query($sql);
+		return $result;	
+	
+	}
+	function tampil_detail_user($id){
+		// return $this->db->get('users');
+			$sql=" SELECT * from users as a, tbl_bagian as b where a.id_bagian = b.id and a.id = '$id'";
+		$result = $this->db->query($sql);
+		return $result;	
+	
+	}
+	function chek_data_baru(){
+		// return $this->db->get('users');
+			$sql=" SELECT * FROM `users`  ORDER BY id DESC limit 1";
+		$result = $this->db->query($sql);
+		return $result->row_array();	
+	
 	}
 
 	function tampil_group(){
@@ -24,6 +42,13 @@ class M_admin extends CI_Model{
 		return $result->result();	
 	}
 
+	function get_users_by_id($id){
+		$sql="SELECT * from users where id = '$id'";
+		$result = $this->db->query($sql);
+		return $result->result();	
+	}
+
+
 	function hapus_groups($id){
 		$sql="delete from groups where id=$id ";
 		$result = $this->db->query($sql);
@@ -44,4 +69,25 @@ class M_admin extends CI_Model{
 	$this->db->where('id', $id);
    $this->db->update($table, $data);
 	}
+
+	public function nonaktif($id)
+   {
+   // date_default_timezone_set('Asia/Jakarta');
+    $data = [
+        "active" => 0
+   ];
+
+   $this->db->where('id', $id);
+   $this->db->update('users', $data);
+}
+public function aktif($id)
+   {
+   // date_default_timezone_set('Asia/Jakarta');
+    $data = [
+        "active" => 1
+   ];
+
+   $this->db->where('id', $id);
+   $this->db->update('users', $data);
+}
 }

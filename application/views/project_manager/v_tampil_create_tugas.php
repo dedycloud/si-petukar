@@ -19,8 +19,10 @@
 
 
         <div class="box">
+
           <div class="box-header">
-            <b>1.</b>
+        
+              <b>1.</b>
             <a  href="<?php echo base_url() ; ?>projectmanager/tambahtugas" class="btn btn-app">
               <i class="fa fa-edit"></i> Create task Now  &nbsp  &nbsp
             </a>
@@ -28,6 +30,9 @@
             <a  href="<?php echo base_url() ; ?>projectmanager/tambahtugas_bymodul" class="btn btn-app">
               <i class="fa fa-edit"></i> Create task modul
             </a>
+
+         
+
 
             <?php if($this->session->flashdata('flashdatatambah') ) : ?>
               <div class="alert alert-success alert-dismissable">

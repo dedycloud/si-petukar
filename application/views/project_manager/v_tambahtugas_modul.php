@@ -19,12 +19,17 @@
 
       <!--/.col (left) -->
       <!-- right column -->
-      <div class="col-md-12">
+      
+      <div class="col-md-10">
         <!-- Horizontal Form -->
         <div class="box box-info">
           <div class="box-header with-border">
             <h3 class="box-title">Input Tugas</h3>
+             <!-- <div class="callout callout-info "> -->
+           
+              <!-- </div>  -->
           </div>
+
           <!-- /.box-header -->
           <!-- form start -->
           <form class="form-horizontal"action="<?php echo base_url(). 'projectmanager/action_tambahtugas_modul'; ?>" method="post"
@@ -155,6 +160,31 @@
           
           <!-- /.box-body -->
         </div>
+        <div class="col-md-2">
+      <div class="box">
+            <div class=" box-header">
+            List Karyawan baru 
+          </div>
+       <div class=" box-body">
+        <table class="table table-bordered">
+                <tr>
+                  <th style="width: 10px">bagian</th>
+                  
+                  <th>nama</th>
+                </tr>
+                         <?php $no=1; foreach($karyawan as $u): ?>
+
+                <tr>
+                  <td><?=  $u->nama_bagian ?></td>
+                  <td><?php echo $u->username ?></td>
+                
+                </tr>
+                  <?php endforeach; ?>
+           
+              </table>
+       </div>
+      </div>
+      </div>
         <!-- /.box -->
       </div>
       <!--/.col (right) -->

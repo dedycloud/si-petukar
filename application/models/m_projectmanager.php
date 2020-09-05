@@ -15,6 +15,14 @@ class M_projectmanager extends CI_Model{
 		return $result->result();	
 	}
 
+	function tampil_karyawan_baru(){
+		$sql="SELECT m.username, p.nama_bagian FROM users as m ,groups as n, users_groups as o ,tbl_bagian as p  WHERE m.id = o.user_id and n.id =o.group_id and m.email NOT IN(SELECT c.email FROM users as c,tbl_tugas as a WHERE a.id_jenis ='2' AND c.id=a.id_tujuan group BY c.id ) and m.id_bagian = p.id and n.id = 3 GROUP BY m.id";
+
+		$result = $this->db->query($sql);
+		return $result->result();	
+	}
+
+	
 	function tampil_all_divisi(){
 		$sql=" select * from tbl_bagian";
 
