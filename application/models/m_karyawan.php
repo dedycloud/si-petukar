@@ -2,10 +2,11 @@
  
 class M_karyawan extends CI_Model{
 	function tampil_task($id){
-	$sql=" SELECT a.*, b.username ,c.jenis_tugas FROM tbl_tugas as a, users as b ,tbl_jenis_tugas as c where a.id_tujuan = b.id and a.id_tujuan = '$id' and a.status NOT LIKE 'success' and a.id_jenis = c.id  ORDER BY a.id DESC";
+	$sql=" SELECT a.*, b.username as penyetuju FROM (select a.*,`b`.`username` AS `tujuan`,`c`.`jenis_tugas` AS `jenis_tugas` from ((`petukar`.`tbl_tugas` `a` join `petukar`.`users` `b`) join `petukar`.`tbl_jenis_tugas` `c`) where `a`.`id_tujuan` = `b`.`id` and `a`.`id_jenis` = `c`.`id`) as a, users as b,tbl_jenis_tugas as c WHERE a.id_penyetuju = b.id and a.id_tujuan = '$id' and a.status NOT LIKE 'success' and a.id_jenis = c.id ORDER BY a.id DESC";
 		$result = $this->db->query($sql);
 		return $result->result();	
 	}
+
 
 function tampil_history_task($id){
 	$sql=" SELECT a.*, b.username FROM history_tugas as a, users as b where a.tujuan = b.id and a.tujuan = '$id' and a.status_success NOT LIKE '' or a.status_revisi NOT LIKE '' ";
@@ -19,7 +20,7 @@ function tampil_history_task($id){
 	}
 
 	function detail_task($id, $id_tugas){
-	$sql=" SELECT a.*, b.username, c.jenis_tugas FROM tbl_tugas as a, users as b, tbl_jenis_tugas as c where a.id_jenis = c.id and a.id_tujuan = b.id and a.id ='$id_tugas' and a.id_tujuan = '$id'";
+	$sql="SELECT a.*, b.username as penyetuju FROM (SELECT m.* , n.username as dibuat  FROM (select a.*,`b`.`username` AS `tujuan`,`c`.`jenis_tugas` AS `jenis_tugas` from ((`petukar`.`tbl_tugas` `a` join `petukar`.`users` `b`) join `petukar`.`tbl_jenis_tugas` `c`) where `a`.`id_tujuan` = `b`.`id` and `a`.`id_jenis` = `c`.`id`) as m,users as n WHERE m.created_by = n.id ) as a, users as b,tbl_jenis_tugas as c WHERE a.id_penyetuju = b.id and a.id ='$id_tugas' and a.id_tujuan = '$id' and a.status NOT LIKE 'success' and a.id_jenis = c.id ORDER BY a.id DESC";
 
 		$result = $this->db->query($sql);
 		return $result->result_array();	

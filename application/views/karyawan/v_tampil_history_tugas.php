@@ -30,14 +30,14 @@
 								<tr>
 									<td><b>Kepada </b></td>
 									<td>:</td>
-									<td> <b>Rivalino</b></td>
+									<td> <b> <?php echo $user->username; ?></b></td>
 								</tr>
-								
+								<!-- 
 								<tr>
 									<td><b>Leader </b></td>
 									<td>:</td>
 									<td> <b>Ella</b></td>
-								</tr>
+								</tr> -->
 								
 								<tr>
 									<td></td>

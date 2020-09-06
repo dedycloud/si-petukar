@@ -38,14 +38,14 @@
                <tr>
                 <td><b>Kepada </b></td>
                 <td>:</td>
-                <td> <b>Rivalino</b></td>
+                <td> <b> <?php echo $user->username; ?></b></td>
               </tr>
 
-              <tr>
+            <!--   <tr>
                 <td><b>Leader </b></td>
                 <td>:</td>
                 <td> <b>Ella</b></td>
-              </tr>
+              </tr> -->
 
               <tr>
                 <td></td>
@@ -87,6 +87,7 @@
               <tr>
                 <th>No</th>
                 <th>Judul Tugas</th>
+                  <th>Penyetuju</th>
                 <th>Tenggang Waktu</th>
                 <th>Jenis</th>
                 <th>Status</th>
@@ -103,6 +104,8 @@
               <tr  >
                 <td><?php echo $no++ ?></td>
                 <td><?php echo $u->judul_tugas?></td>
+                <td><?php echo $u->penyetuju ?></td>
+
                 <td> <?= date("d M Y",strtotime($u->jangka_waktu )) ; ?>
                 <?php 
                 $sql="SELECT datediff(current_date(), '$u->jangka_waktu') as selisih FROM tbl_tugas where id = '$u->id' ";

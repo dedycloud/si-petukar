@@ -9,14 +9,14 @@ class M_coprojectmanager extends CI_Model{
 	}
 
 	function tampil_accept_task($id){
-		$sql=" select * from tbl_tugas where id_penyetuju = '$id' ORDER BY status = 'waiting_accept' DESC, status = 'proccess' DESC, status = 'available' DESC,status = 'failed' DESC";
+		$sql="  SELECT o.*,p.username as dibuat FROM (SELECT m.* ,n.username as tujuan FROM (select a.* ,b.username as penyetuju from tbl_tugas as a,users as b WHERE a.id_penyetuju = b.id) as m, users as n WHERE m.id_tujuan = n.id) as o , users as p WHERE o.created_by = p.id and o.id_penyetuju = '$id' ORDER BY o.status = 'waiting_accept' DESC, o.status = 'proccess' DESC, o.status = 'available' DESC,o.status = 'failed' DESC";
 
 		$result = $this->db->query($sql);
 		return $result->result();	
 	}
 	
 	function detail_accept_task($id, $id_tugas){
-	$sql=" select * from tbl_tugas where id='$id_tugas' and id_penyetuju = '$id'";
+	$sql=" SELECT o.*,p.username as dibuat FROM (SELECT m.* ,n.username as tujuan FROM (select a.* ,b.username as penyetuju from tbl_tugas as a,users as b WHERE a.id_penyetuju = b.id) as m, users as n WHERE m.id_tujuan = n.id) as o , users as p WHERE o.created_by = p.id and o.id='$id_tugas' and o.id_penyetuju = '$id'";
 
 		$result = $this->db->query($sql);
 		return $result->result_array();	

@@ -35,8 +35,8 @@
                 </tr>
                 <tr>
                   <td></td>
-                  <td>Tujuan</td>
-                  <td><?= $row['id_tujuan']; ?></td>
+                  <td>From</td>
+                  <td><?= $row['tujuan']; ?></td>
                 </tr>
 
                 <tr>
@@ -54,7 +54,11 @@
                 <tr>
                   <td></td>
                   <td>Jenis</td>
-                  <td><?= $row['id_jenis']; ?></td>              
+                  <td><?php if ($row['id_jenis'] == 1) {
+                    echo "new task";
+                  }else{
+                    echo "job desk";
+                  } ?></td>              
                 </tr>
 
                 <tr>
@@ -66,7 +70,7 @@
                 <tr>
                   <td></td>
                   <td>Created By</td>
-                  <td><?= $row['created_by']; ?></td>      
+                  <td><?= $row['dibuat']; ?></td>      
                 </tr>
                 
                 <tr>

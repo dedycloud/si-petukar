@@ -60,6 +60,7 @@
                 <tr>
                   <th>No</th>
                   <th>Tujuan</th>
+                  <th>Penyetuju</th>
                   <th>Jangka Waktu</th>
                   <th>Judul Tugas</th>
                   <th>Jenis</th>
@@ -77,7 +78,8 @@
                 
                 <tr>
                   <td><?php echo $no++ ?></td>
-                  <td><?php echo $u->id_tujuan?></td>
+                  <td><?php echo $u->tujuan?></td>
+                   <td><?php echo $u->penyetuju ?></td>
                   <td><?= date("d M Y",strtotime($u->jangka_waktu )) ; ?></td>
                   <td><?php echo $u->judul_tugas?></td>
                   <td><?php  if($u->id_jenis == 1){  ?> tugas now <?php } elseif ($u->id_jenis == 2){ ?> tugas job <?php }  ?></td>

@@ -39,7 +39,12 @@
                 <tr>
                   <td></td>
                   <td>Tujuan</td>
-                  <td><?= $row['username']; ?></td>
+                  <td><?= $row['tujuan']; ?></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>Penyetuju</td>
+                  <td><?= $row['penyetuju']; ?></td>
                 </tr>
 
                 <tr>
@@ -69,7 +74,7 @@
                 <tr>
                   <td></td>
                   <td>Created By</td>
-                  <td><?= $row['created_by']; ?></td>      
+                  <td><?= $row['dibuat']; ?></td>      
                 </tr>
                 
                 <tr>

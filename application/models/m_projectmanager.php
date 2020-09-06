@@ -63,7 +63,7 @@ class M_projectmanager extends CI_Model{
 
 
 	function detail_create_task($id_detail){
-		$sql=" select * from tbl_tugas where id = '$id_detail'";
+		$sql=" SELECT m.*,n.username as penyetuju FROM ( SELECT a.* ,b.username as tujuan FROM (SELECT a.*, b.username as dibuat FROM tbl_tugas as a, users as b where a.created_by = b.id) as a, users as b WHERE a.id_tujuan = b.id) as m, users as n WHERE m.id_penyetuju = n.id and m.id = '$id_detail'";
 
 		$result = $this->db->query($sql);
 		return $result->result_array();
@@ -105,7 +105,7 @@ class M_projectmanager extends CI_Model{
 
 	}
 	function tampil_create_task($id){
-		$sql=" SELECT a.*, b.username FROM tbl_tugas as a, users as b where a.created_by = b.id and a.created_by = '$id'  ORDER BY a.id DESC";
+		$sql=" SELECT m.*,n.username as penyetuju FROM ( SELECT a.* ,b.username as tujuan FROM (SELECT a.*, b.username as dibuat FROM tbl_tugas as a, users as b where a.created_by = b.id) as a, users as b WHERE a.id_tujuan = b.id) as m, users as n WHERE m.id_penyetuju = n.id and m.created_by = '$id'  ORDER BY m.id DESC";
 
 		$result = $this->db->query($sql);
 		return $result->result();	
