@@ -32,7 +32,7 @@
 
           <!-- /.box-header -->
           <!-- form start -->
-          <form class="form-horizontal"action="<?php echo base_url(). 'projectmanager/action_tambahtugas_modul'; ?>" method="post"
+          <form class="form-horizontal"action="<?php echo base_url(). 'projectmanager/tambahtugas_bymodul'; ?>" method="post"
             >
             <div class="box-body">
 
@@ -42,14 +42,17 @@
 
                 <div class="col-sm-10">
                   <select class="form-control select2"name="tujuan" style="width: 100%;" >
-                    <option>--Pilih--</option>
+                    <option value="">--Pilih--</option>
                     <?php foreach($tujuan as $row) : ?>
                       <!-- -->
                       <option value="<?=$row['id'] ?>"><?=$row['username'] ?></option>   
 
                     <?php endforeach; ?>
 
-                  </select>                  </div>
+                  </select>             
+                        <span class="text-danger"><?php echo form_error('tujuan'); ?></span>
+
+                       </div>
                 </div>
 
                 <div class="form-group">
@@ -57,14 +60,17 @@
 
                   <div class="col-sm-10">
                     <select class="form-control select2"name="penyetuju" style="width: 100%;" >
-                      <option>--Pilih--</option>
+                      <option value="">--Pilih--</option>
                       <?php foreach($penyetuju as $row) : ?>
                         <!-- -->
                         <option value="<?=$row['id'] ?>"><?=$row['username'] ?></option>   
 
                       <?php endforeach; ?>
 
-                    </select>                  </div>
+                    </select>              
+                        <span class="text-danger"><?php echo form_error('penyetuju'); ?></span>
+
+                        </div>
                   </div>
 
                   <div class="form-group">
@@ -72,7 +78,10 @@
 
                     <div class="col-sm-10">
                       <input type="date"name="jangka_waktu" class="form-control" id="inputEmail3" placeholder="jangka_waktu">
+                        <span class="text-danger"><?php echo form_error('jangka_waktu'); ?></span>
+
                     </div>
+
                   </div>
 
                   <div class="form-group">
@@ -80,6 +89,7 @@
 
                     <div class="col-sm-10">
                       <input type="text"name="judul_tugas" class="form-control" id="inputPassword3" placeholder="judul_tugas">
+                        <span class="text-danger"><?php echo form_error('judul_tugas'); ?></span>
 
                     </div>
                   </div>
@@ -117,11 +127,12 @@
                 <label for="inputEmail3" class="col-sm-2 control-label">modul tugas 1</label>
                 <div class="col-sm-10">
                   <select class="form-control "name="modul[]" style="width: 100%;" >
-                    <option>--Pilih--</option>
+                    <option value="">--Pilih--</option>
                     <?php foreach($modul as $row) : ?>
                       <option value="<?=$row['id'] ?>"><?=$row['divisi'] ?> -> <?=$row['nama'] ?></option>   
                     <?php endforeach; ?>
-                  </select>                 
+                  </select>       
+
                 </div>
               </div>
 

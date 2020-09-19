@@ -52,7 +52,7 @@
 								<label for="inputPassword3" class="col-sm-2 control-label">username</label>
 
 								<div class="col-sm-10">
-									<input type="text"name="username" class="form-control" id="inputPassword3" placeholder="username">
+									<input type="text"name="username" class="form-control" id="inputPassword3" placeholder="username" required>
 
 								</div>
 							</div>
@@ -60,7 +60,7 @@
 								<label for="inputPassword3" class="col-sm-2 control-label">email</label>
 
 								<div class="col-sm-10">
-									<input type="email"name="email" class="form-control" id="inputPassword3" placeholder="email">
+									<input type="email"name="email" class="form-control" id="inputPassword3" placeholder="email" required>
 
 								</div>
 							</div>
@@ -68,7 +68,7 @@
 								<label for="inputPassword3" class="col-sm-2 control-label">password</label>
 
 								<div class="col-sm-10">
-									<input type="password"name="password" class="form-control" id="inputPassword3" placeholder="password">
+									<input type="password"name="password" class="form-control" id="inputPassword3" placeholder="password" required>
 
 								</div>
 							</div>
@@ -78,8 +78,8 @@
 								<label for="inputEmail3" class="col-sm-2 control-label">Groups</label>
 
 								<div class="col-sm-10">
-									<select class="form-control select2"name="group" style="width: 100%;" >
-										<option>--Pilih--</option>
+									<select class="form-control select2"name="group" style="width: 100%;" required>
+										<option value="">--Pilih--</option>
 										<?php foreach($groups as $row) : ?>
 											<!-- -->
 											<option value="<?=$row['id'] ?>"><?=$row['name'] ?></option>   
@@ -96,8 +96,8 @@
 								<label for="inputEmail3" class="col-sm-2 control-label">Bagian</label>
 
 								<div class="col-sm-10">
-									<select class="form-control select2"name="bagian" style="width: 100%;" >
-										<option>--Pilih--</option>
+									<select class="form-control select2"name="bagian" style="width: 100%;" required>
+										<option value="">--Pilih--</option>
 										<?php foreach($bagian as $row) : ?>
 											<!-- -->
 											<option value="<?=$row['id'] ?>"><?=$row['nama_bagian'] ?></option>   

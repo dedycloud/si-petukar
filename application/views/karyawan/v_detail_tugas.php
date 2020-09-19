@@ -209,7 +209,7 @@ else if ($status == 'success') { ?>
 
 
           <div class="modal-body">
-            <p><input type="file" name="berkas" />
+            <p><input type="file" name="berkas" required />
             </p>
             <p>Isi file terlebih dahulu </p>
           </div>
@@ -239,7 +239,7 @@ else if ($status == 'success') { ?>
           <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
 
           <div class="modal-body">
-            <p><input type="file" name="berkas" />
+            <p><input type="file" name="berkas" required />
             </p>
             <p>Isi file terlebih dahulu </p>
           </div>

@@ -38,7 +38,7 @@
 									<label for="inputPassword3" class="col-sm-2 control-label">Nama Bagian</label>
 
 									<div class="col-sm-10">
-										<input type="text"name="nama_bagian" class="form-control" id="inputPassword3" placeholder="judul_tugas">
+										<input type="text"name="nama_bagian" class="form-control" id="inputPassword3" placeholder="judul_tugas" required>
 
 									</div>
 								</div>
