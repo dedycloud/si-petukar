@@ -91,7 +91,7 @@
                               <i class="ace-icon fa fa-lock"></i>
                             </span>
                           </label>
-                          <?php echo form_error('identity'); ?>
+                          <?php echo form_error('password'); ?>
 
                           <div class="space"></div>
 
