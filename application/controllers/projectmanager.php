@@ -10,6 +10,7 @@ class Projectmanager extends CI_Controller {
 		$this->load->model('M_dashboard');
 		$this->load->model('M_chart');
 		$this->load->database();
+		$this->load->library('form_validation');
 		$this->load->helper(array('form', 'url','directory','path'));	
 		
 	}
@@ -128,25 +129,6 @@ class Projectmanager extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	public function tambahtugas()
-	{
-		$this->secure();
-		$data['tujuan'] =$this->m_projectmanager->get_data_tujuan();
-		$data['penyetuju'] =$this->m_projectmanager->get_data_penyetuju();
-		$data['jenis'] =$this->m_projectmanager->get_data_jenis();
-		$data['modul'] =$this->m_projectmanager->get_data_modul();
-		$data['user'] = $this->ion_auth->user()->row();
-		$username=$data['user']->username;
-		$group=$this->ion_auth->get_users_groups()->row()->id;
-		$data['group']=$group;
-		$this->load->view('header',$data);
-		$this->load->view('navigation');
-		$this->load->view('sidebar',$data);
-
-		$this->load->view('project_manager/v_tambah_tugas',$data);
-		$this->load->view('footer');
-	}
-
 	public function tambahtugas_bymodul()
 	{
 		$this->secure();
@@ -183,9 +165,18 @@ class Projectmanager extends CI_Controller {
 		$this->load->view('footer',$data);
 	}
 
-	public function actiontambahtugas()
+	public function tambahtugas()
 	{
+		$this->load->library('form_validation');
 		
+	$this->form_validation->set_rules('judul_tugas','this','required');
+	$this->form_validation->set_rules('tujuan','this','required');
+	$this->form_validation->set_rules('penyetuju','this','required');
+	$this->form_validation->set_rules('jangka_waktu','this','required');
+ 
+
+	if($this->form_validation->run() === TRUE){
+			
 		$tujuan = $this->input->post('tujuan');
 		$penyetuju = $this->input->post('penyetuju');
 		$jangka_waktu = $this->input->post('jangka_waktu');
@@ -210,6 +201,24 @@ class Projectmanager extends CI_Controller {
 		$this->m_projectmanager->input_data($data,'tbl_tugas');
 		$this->session->set_flashdata('flashdatatambah', 'Data berhasil di tambah');
 		redirect('projectmanager/tampil_create_task');
+	}else{
+				$this->secure();
+		$data['tujuan'] =$this->m_projectmanager->get_data_tujuan();
+		$data['penyetuju'] =$this->m_projectmanager->get_data_penyetuju();
+		$data['jenis'] =$this->m_projectmanager->get_data_jenis();
+		$data['modul'] =$this->m_projectmanager->get_data_modul();
+		$data['user'] = $this->ion_auth->user()->row();
+		$username=$data['user']->username;
+		$group=$this->ion_auth->get_users_groups()->row()->id;
+		$data['group']=$group;
+		$this->load->view('header',$data);
+		$this->load->view('navigation');
+		$this->load->view('sidebar',$data);
+
+		$this->load->view('project_manager/v_tambah_tugas',$data);
+		$this->load->view('footer');
+	}
+
 	}
 
 
