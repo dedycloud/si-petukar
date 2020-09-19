@@ -1148,7 +1148,7 @@ a, a:hover {
             padding-top: 25px;
             padding-bottom: 5px;" class="button">
                 <table border="0" cellpadding="0" cellspacing="0" align="center" style="max-width: 240px; min-width: 120px; border-collapse: collapse; border-spacing: 0; padding: 0;"><tr><td align="center" valign="middle" style="padding: 12px 24px; margin: 0; border-collapse: collapse; border-spacing: 0; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px;"
-                    bgcolor="#E9703E"><a target="_blank" style="text-decoration: none;
+                    bgcolor="#088A08"><a target="_blank" style="text-decoration: none;
                     color: #FFFFFF; font-family: sans-serif; font-size: 17px; font-weight: 400; line-height: 120%;"
                     href=" ' . $url . '">
                         Reset Password
@@ -1277,7 +1277,7 @@ a, a:hover {
             'smtp_host' => 'ssl://smtp.googlemail.com',  
             'smtp_port' => 465,  
             'smtp_user' => 'dedyindra120@gmail.com', 
-            'smtp_pass' => 'xxxxxxxx',   
+            'smtp_pass' => 'xxxxxx',   
             'mailtype' => 'html',   
             'charset' => 'iso-8859-1'  
            );  
