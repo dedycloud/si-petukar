@@ -15,6 +15,7 @@ class Auth extends CI_Controller
 		$this->load->database();
 		$this->load->library(['ion_auth', 'form_validation']);
 		$this->load->helper(['url', 'language']);
+        $this->load->model('M_account');
 
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
@@ -304,101 +305,154 @@ class Auth extends CI_Controller
 		}
 	}
 
+ public function reset_password()  
+     {  
+      //pengecekan token dan mereset password
+       $token = $this->base64url_decode($this->uri->segment(4));           
+       $cleanToken = $this->security->xss_clean($token);  
+         
+       $user_info = $this->M_account->isTokenValid($cleanToken); //either false or array();          
+         
+       if(!$user_info){  
+         $this->session->set_flashdata('sukses', 'Token tidak valid atau kadaluarsa');  
+         redirect(site_url('auth/Login'),'refresh');   
+       }    
+   
+       $data = array(  
+         'title'=> 'Halaman Reset Password | Tutorial reset password CodeIgniter @ https://recodeku.blogspot.com',  
+         'nama'=> $user_info->username,   
+         'email'=>$user_info->email,   
+         'token'=>$this->base64url_encode($token)  
+       );  
+         
+       $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');  
+       $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]');         
+         
+       if ($this->form_validation->run() == FALSE) {    
+           $this->load->view('user/reset_password',$data);
+             
+       }else{  
+               
+
+            $post = $this->input->post(NULL, TRUE);  
+            $cleanPost = $this->security->xss_clean($post);
+            $Password = $cleanPost['password'];
+     
+             $id =  $user_info->id ;  
+             $data = array(
+             'password' => $Password,
+                  );                
+          
+         // $post = $this->input->post(NULL, TRUE);          
+         // $cleanPost = $this->security->xss_clean($post);
+         // $hashed = md5($cleanPost['password']);          
+         // $cleanPost['password'] = $hashed;  
+         // $cleanPost['id'] = $user_info->id;  
+            // unset($cleanPost['passconf']);          
+          if(!  $this->ion_auth->update($id,$data)){  
+           $this->session->set_flashdata('flash', 'Update password gagal.');  
+         }else{  
+           $this->session->set_flashdata('flash', 'Password anda sudah  
+             diperbaharui. Silakan login.');  
+         }  
+         redirect(site_url('auth/login'),'refresh');         
+       }  
+     }  
 	/**
 	 * Reset password - final step for forgotten password
 	 *
 	 * @param string|null $code The reset code
 	 */
-	public function reset_password($code = NULL)
-	{
-		if (!$code)
-		{
-			show_404();
-		}
+	// public function reset_password($code = NULL)
+	// {
+	// 	if (!$code)
+	// 	{
+	// 		show_404();
+	// 	}
 
-		$this->data['title'] = $this->lang->line('reset_password_heading');
+	// 	$this->data['title'] = $this->lang->line('reset_password_heading');
 		
-		$user = $this->ion_auth->forgotten_password_check($code);
+	// 	$user = $this->ion_auth->forgotten_password_check($code);
 
-		if ($user)
-		{
-			// if the code is valid then display the password reset form
+	// 	if ($user)
+	// 	{
+	// 		// if the code is valid then display the password reset form
 
-			$this->form_validation->set_rules('new', $this->lang->line('reset_password_validation_new_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|matches[new_confirm]');
-			$this->form_validation->set_rules('new_confirm', $this->lang->line('reset_password_validation_new_password_confirm_label'), 'required');
+	// 		$this->form_validation->set_rules('new', $this->lang->line('reset_password_validation_new_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|matches[new_confirm]');
+	// 		$this->form_validation->set_rules('new_confirm', $this->lang->line('reset_password_validation_new_password_confirm_label'), 'required');
 
-			if ($this->form_validation->run() === FALSE)
-			{
-				// display the form
+	// 		if ($this->form_validation->run() === FALSE)
+	// 		{
+	// 			// display the form
 
-				// set the flash data error message if there is one
-				$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+	// 			// set the flash data error message if there is one
+	// 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
-				$this->data['min_password_length'] = $this->config->item('min_password_length', 'ion_auth');
-				$this->data['new_password'] = [
-					'name' => 'new',
-					'id' => 'new',
-					'type' => 'password',
-					'pattern' => '^.{' . $this->data['min_password_length'] . '}.*$',
-				];
-				$this->data['new_password_confirm'] = [
-					'name' => 'new_confirm',
-					'id' => 'new_confirm',
-					'type' => 'password',
-					'pattern' => '^.{' . $this->data['min_password_length'] . '}.*$',
-				];
-				$this->data['user_id'] = [
-					'name' => 'user_id',
-					'id' => 'user_id',
-					'type' => 'hidden',
-					'value' => $user->id,
-				];
-				$this->data['csrf'] = $this->_get_csrf_nonce();
-				$this->data['code'] = $code;
+	// 			$this->data['min_password_length'] = $this->config->item('min_password_length', 'ion_auth');
+	// 			$this->data['new_password'] = [
+	// 				'name' => 'new',
+	// 				'id' => 'new',
+	// 				'type' => 'password',
+	// 				'pattern' => '^.{' . $this->data['min_password_length'] . '}.*$',
+	// 			];
+	// 			$this->data['new_password_confirm'] = [
+	// 				'name' => 'new_confirm',
+	// 				'id' => 'new_confirm',
+	// 				'type' => 'password',
+	// 				'pattern' => '^.{' . $this->data['min_password_length'] . '}.*$',
+	// 			];
+	// 			$this->data['user_id'] = [
+	// 				'name' => 'user_id',
+	// 				'id' => 'user_id',
+	// 				'type' => 'hidden',
+	// 				'value' => $user->id,
+	// 			];
+	// 			$this->data['csrf'] = $this->_get_csrf_nonce();
+	// 			$this->data['code'] = $code;
 
-				// render
-				$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'reset_password', $this->data);
-			}
-			else
-			{
-				$identity = $user->{$this->config->item('identity', 'ion_auth')};
+	// 			// render
+	// 			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'reset_password', $this->data);
+	// 		}
+	// 		else
+	// 		{
+	// 			$identity = $user->{$this->config->item('identity', 'ion_auth')};
 
-				// do we have a valid request?
-				if ($this->_valid_csrf_nonce() === FALSE || $user->id != $this->input->post('user_id'))
-				{
+	// 			// do we have a valid request?
+	// 			if ($this->_valid_csrf_nonce() === FALSE || $user->id != $this->input->post('user_id'))
+	// 			{
 
-					// something fishy might be up
-					$this->ion_auth->clear_forgotten_password_code($identity);
+	// 				// something fishy might be up
+	// 				$this->ion_auth->clear_forgotten_password_code($identity);
 
-					show_error($this->lang->line('error_csrf'));
+	// 				show_error($this->lang->line('error_csrf'));
 
-				}
-				else
-				{
-					// finally change the password
-					$change = $this->ion_auth->reset_password($identity, $this->input->post('new'));
+	// 			}
+	// 			else
+	// 			{
+	// 				// finally change the password
+	// 				$change = $this->ion_auth->reset_password($identity, $this->input->post('new'));
 
-					if ($change)
-					{
-						// if the password was successfully changed
-						$this->session->set_flashdata('message', $this->ion_auth->messages());
-						redirect("auth/login", 'refresh');
-					}
-					else
-					{
-						$this->session->set_flashdata('message', $this->ion_auth->errors());
-						redirect('auth/reset_password/' . $code, 'refresh');
-					}
-				}
-			}
-		}
-		else
-		{
-			// if the code is invalid then send them back to the forgot password page
-			$this->session->set_flashdata('message', $this->ion_auth->errors());
-			redirect("auth/forgot_password", 'refresh');
-		}
-	}
+	// 				if ($change)
+	// 				{
+	// 					// if the password was successfully changed
+	// 					$this->session->set_flashdata('message', $this->ion_auth->messages());
+	// 					redirect("auth/login", 'refresh');
+	// 				}
+	// 				else
+	// 				{
+	// 					$this->session->set_flashdata('message', $this->ion_auth->errors());
+	// 					redirect('auth/reset_password/' . $code, 'refresh');
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// 	else
+	// 	{
+	// 		// if the code is invalid then send them back to the forgot password page
+	// 		$this->session->set_flashdata('message', $this->ion_auth->errors());
+	// 		redirect("auth/forgot_password", 'refresh');
+	// 	}
+	// }
 
 	/**
 	 * Activate the user
@@ -916,5 +970,352 @@ class Auth extends CI_Controller
 			return $view_html;
 		}
 	}
+
+	 public function lupa_password()
+    {
+    
+        $this->load->view('user/lupa_password');
+    }    
+
+
+       public function sendCredential()  
+     {  
+     
+         // ketika submit
+         $this->form_validation->set_rules('email', 'Email', 'required|valid_email');   
+         
+         if($this->form_validation->run() == FALSE) {  
+             $data['title'] = 'Halaman Reset Password ';
+         $this->load->view('auth/login',$data);
+              
+           
+         }else{  
+             $email = $this->input->post('email');   
+             $clean = $this->security->xss_clean($email);  
+             $userInfo = $this->M_account->getUserInfoByEmail($clean);  
+               
+             if(!$userInfo){ 
+              
+               $this->session->set_flashdata('sukses', 'email address salah, silakan coba lagi.');  
+               redirect(site_url('auth/Login'),'refresh');   
+             }    
+               
+
+
+             //build token   
+                     
+             $token = $this->M_account->insertToken($userInfo->id);              
+             $qstring = $this->base64url_encode($token);           
+             $url = site_url() . 'auth/reset_password/token/' . $qstring;  
+             $link = '<a href="' . $url . '">' . 'Ubah password' . '</a>';   
+               
+
+
+
+
+
+             $message = '';             
+             $message .= '<strong> </strong><br>';  
+                 //pesan
+
+             $message .= '
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0;">
+    <meta name="format-detection" content="telephone=no"/>
+
+    <!-- Responsive Mobile-First Email Template by Konstantin Savchenko, 2015.
+    https://github.com/konsav/email-templates/  -->
+
+    <style>
+/* Reset styles */ 
+body { margin: 0; padding: 0; min-width: 100%; width: 100% !important; height: 100% !important;}
+body, table, td, div, p, a { -webkit-font-smoothing: antialiased; text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; line-height: 100%; }
+table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse !important; border-spacing: 0; }
+img { border: 0; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; }
+#outlook a { padding: 0; }
+.ReadMsgBody { width: 100%; } .ExternalClass { width: 100%; }
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div { line-height: 100%; }
+
+/* Rounded corners for advanced mail clients only */ 
+@media all and (min-width: 560px) {
+    .container { border-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px; -khtml-border-radius: 8px;}
+}
+
+/* Set color for auto links (addresses, dates, etc.) */ 
+a, a:hover {
+    color: #127DB3;
+}
+.footer a, .footer a:hover {
+    color: #999999;
+}
+
+    </style>
+
+    <!-- MESSAGE SUBJECT -->
+    <title>TourInc</title>
+
+</head>
+
+<!-- BODY -->
+<!-- Set message background color (twice) and text color (twice) -->
+<body topmargin="0" rightmargin="0" bottommargin="0" leftmargin="0" marginwidth="0" marginheight="0" width="100%" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; width: 100%; height: 100%; -webkit-font-smoothing: antialiased; text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; line-height: 100%;
+    background-color: #F0F0F0;
+    color: #000000;"
+    bgcolor="#F0F0F0"
+    text="#000000">
+
+<!-- SECTION / BACKGROUND -->
+<!-- Set message background color one again -->
+<table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; width: 100%;" class="background"><tr><td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;"
+    bgcolor="#F0F0F0">
+
+<!-- WRAPPER -->
+<!-- Set wrapper width (twice) -->
+<table border="0" cellpadding="0" cellspacing="0" align="center"
+    width="560" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+    max-width: 560px;" class="wrapper">
+
+    <tr>
+        <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+            padding-top: 20px;
+            padding-bottom: 20px;">
+
+            <!-- PREHEADER -->
+            <!-- Set text color to background color -->
+            <div style="display: none; visibility: hidden; overflow: hidden; opacity: 0; font-size: 1px; line-height: 1px; height: 0; max-height: 0; max-width: 0;
+            color: #F0F0F0;" class="preheader">
+                Available on&nbsp;GitHub and&nbsp;CodePen. Highly compatible. Designer friendly. More than 50%&nbsp;of&nbsp;total email opens occurred on&nbsp;a&nbsp;mobile device&nbsp;— a&nbsp;mobile-friendly design is&nbsp;a&nbsp;must for&nbsp;email campaigns.</div>
+
+            <a target="_blank" style="text-decoration: none;"
+                href="https://github.com/konsav/email-templates/"><img border="0" vspace="0" hspace="0"
+                src="https://raw.githubusercontent.com/konsav/email-templates/master/images/logo-black.png"
+                width="100" height="30"
+                alt="Logo" title="Logo" style="
+                color: #000000;
+                font-size: 10px; margin: 0; padding: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;" /></a>
+
+        </td>
+    </tr>
+
+<!-- End of WRAPPER -->
+</table>
+
+<!-- WRAPPER / CONTEINER -->
+<!-- Set conteiner background color -->
+<table border="0" cellpadding="0" cellspacing="0" align="center"
+    bgcolor="#FFFFFF"
+    width="560" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+    max-width: 560px;" class="container">
+
+    <!-- HEADER -->
+    <!-- Set text color and font family ("sans-serif" or "Georgia, serif") -->
+    <tr>
+        <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 24px; font-weight: bold; line-height: 130%;
+            padding-top: 25px;
+            color: #000000;
+            font-family: sans-serif;" class="header">
+               
+        </td>
+    </tr>
+    
+    <!-- SUBHEADER -->
+    <!-- Set text color and font family ("sans-serif" or "Georgia, serif") -->
+    <tr>
+        <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-bottom: 3px; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 18px; font-weight: 300; line-height: 150%;
+            padding-top: 5px;
+            color: #000000;
+            font-family: sans-serif;" class="subheader">
+                Reset Password
+        </td>
+    </tr>
+
+    <!-- PARAGRAPH -->
+    <!-- Set text color and font family ("sans-serif" or "Georgia, serif"). Duplicate all text styles in links, including line-height -->
+    <tr>
+        <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 400; line-height: 160%;
+            padding-top: 25px; 
+            color: #000000;
+            font-family: sans-serif;" class="paragraph">
+                Silakan klik link dibawah untuk melakukan reset password.
+        </td>
+    </tr>
+
+    <!-- BUTTON -->
+    <tr>
+        <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+            padding-top: 25px;
+            padding-bottom: 5px;" class="button">
+                <table border="0" cellpadding="0" cellspacing="0" align="center" style="max-width: 240px; min-width: 120px; border-collapse: collapse; border-spacing: 0; padding: 0;"><tr><td align="center" valign="middle" style="padding: 12px 24px; margin: 0; border-collapse: collapse; border-spacing: 0; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px;"
+                    bgcolor="#E9703E"><a target="_blank" style="text-decoration: none;
+                    color: #FFFFFF; font-family: sans-serif; font-size: 17px; font-weight: 400; line-height: 120%;"
+                    href=" ' . $url . '">
+                        Reset Password
+                    </a>
+            </td></tr></table>
+        </td>
+    </tr>
+
+    <!-- LINE -->
+    <!-- Set line color -->
+    <tr>    
+        <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+            padding-top: 25px;" class="line"><hr
+            color="#E0E0E0" align="center" width="100%" size="1" noshade style="margin: 0; padding: 0;" />
+        </td>
+    </tr>
+
+    <!-- LIST -->
+    <tr>
+        <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%;" class="list-item"><table align="center" border="0" cellspacing="0" cellpadding="0" style="width: inherit; margin: 0; padding: 0; border-collapse: collapse; border-spacing: 0;">
+            
+            <!-- LIST ITEM -->
+        </table></td>
+    </tr>
+
+    <!-- PARAGRAPH -->
+    <!-- Set text color and font family ("sans-serif" or "Georgia, serif"). Duplicate all text styles in links, including line-height -->
+    <tr>
+        <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 400; line-height: 160%;
+            padding-top: 20px;
+            padding-bottom: 25px;
+            color: #000000;
+            font-family: sans-serif;" class="paragraph">
+                Have a&nbsp;question? <a href="mailto:sekretariat@ptpn7.com" target="_blank" style="color: #127DB3; font-family: sans-serif; font-size: 17px; font-weight: 400; line-height: 160%;">sekretariat@ptpn7.com</a>
+        </td>
+    </tr>
+
+<!-- End of WRAPPER -->
+</table>
+
+<!-- WRAPPER -->
+<!-- Set wrapper width (twice) -->
+<table border="0" cellpadding="0" cellspacing="0" align="center"
+    width="560" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+    max-width: 560px;" class="wrapper">
+
+    <!-- SOCIAL NETWORKS -->
+    <!-- Image text color should be opposite to background color. Set your url, image src, alt and title. Alt text should fit the image size. Real image size should be x2 -->
+    <tr>
+        <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+            padding-top: 25px;" class="social-icons"><table
+            width="256" border="0" cellpadding="0" cellspacing="0" align="center" style="border-collapse: collapse; border-spacing: 0; padding: 0;">
+            <tr>
+
+                <!-- ICON 1 -->
+                <td align="center" valign="middle" style="margin: 0; padding: 0; padding-left: 10px; padding-right: 10px; border-collapse: collapse; border-spacing: 0;"><a target="_blank"
+                    href="https://raw.githubusercontent.com/konsav/email-templates/"
+                style="text-decoration: none;"><img border="0" vspace="0" hspace="0" style="padding: 0; margin: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: inline-block;
+                    color: #000000;"
+                    alt="F" title="Facebook"
+                    width="44" height="44"
+                    src="https://raw.githubusercontent.com/konsav/email-templates/master/images/social-icons/facebook.png"></a></td>
+
+                <!-- ICON 2 -->
+                <td align="center" valign="middle" style="margin: 0; padding: 0; padding-left: 10px; padding-right: 10px; border-collapse: collapse; border-spacing: 0;"><a target="_blank"
+                    href="https://raw.githubusercontent.com/konsav/email-templates/"
+                style="text-decoration: none;"><img border="0" vspace="0" hspace="0" style="padding: 0; margin: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: inline-block;
+                    color: #000000;"
+                    alt="T" title="Twitter"
+                    width="44" height="44"
+                    src="https://raw.githubusercontent.com/konsav/email-templates/master/images/social-icons/twitter.png"></a></td>             
+
+                <!-- ICON 3 -->
+                <td align="center" valign="middle" style="margin: 0; padding: 0; padding-left: 10px; padding-right: 10px; border-collapse: collapse; border-spacing: 0;"><a target="_blank"
+                    href="https://raw.githubusercontent.com/konsav/email-templates/"
+                style="text-decoration: none;"><img border="0" vspace="0" hspace="0" style="padding: 0; margin: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: inline-block;
+                    color: #000000;"
+                    alt="G" title="Google Plus"
+                    width="44" height="44"
+                    src="https://raw.githubusercontent.com/konsav/email-templates/master/images/social-icons/googleplus.png"></a></td>      
+
+                <!-- ICON 4 -->
+                <td align="center" valign="middle" style="margin: 0; padding: 0; padding-left: 10px; padding-right: 10px; border-collapse: collapse; border-spacing: 0;"><a target="_blank"
+                    href="https://raw.githubusercontent.com/konsav/email-templates/"
+                style="text-decoration: none;"><img border="0" vspace="0" hspace="0" style="padding: 0; margin: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: inline-block;
+                    color: #000000;"
+                    alt="I" title="Instagram"
+                    width="44" height="44"
+                    src="https://raw.githubusercontent.com/konsav/email-templates/master/images/social-icons/instagram.png"></a></td>
+
+            </tr>
+            </table>
+        </td>
+    </tr>
+
+    <!-- FOOTER -->
+    <!-- Set text color and font family ("sans-serif" or "Georgia, serif"). Duplicate all text styles in links, including line-height -->
+    <tr>
+        <td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 13px; font-weight: 400; line-height: 150%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            color: #999999;
+            font-family: sans-serif;" class="footer">
+
+                <a href="https://github.com/konsav/email-templates/" target="_blank" style="text-decoration: underline; color: #999999; font-family: sans-serif; font-size: 13px; font-weight: 400; line-height: 150%;">PT Surveyor Indonesia</a>
+                <img width="1" height="1" border="0" vspace="0" hspace="0" style="margin: 0; padding: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;"
+                src="https://raw.githubusercontent.com/konsav/email-templates/master/images/tracker.png" />
+
+        </td>
+    </tr>
+
+<!-- End of WRAPPER -->
+</table>
+
+<!-- End of SECTION / BACKGROUND -->
+</td></tr></table>
+
+</body>
+</html>
+             ' ;         
+             
+           //send to email
+              $this->load->library('email');
+             $config = Array(  
+            'protocol' => 'smtp',  
+            'smtp_host' => 'ssl://smtp.googlemail.com',  
+            'smtp_port' => 465,  
+            'smtp_user' => 'dedyindra120@gmail.com', 
+            'smtp_pass' => 'xxxxxxxx',   
+            'mailtype' => 'html',   
+            'charset' => 'iso-8859-1'  
+           );  
+             $this->email->initialize($config);  
+
+               $namaemail = $this->input->post('email'); 
+           $this->email->set_newline("\r\n");  
+           $this->email->from('no-reply : ', 'Admin Ptpn7 ');   
+           $this->email->to($namaemail );   
+           $this->email->subject('Ubah Password');   
+           $this->email->message( $message );  //amil pesan dari token
+           if (!$this->email->send()) {  
+            // show_error($this->email->print_debugger());   
+            $this->session->set_flashdata('terkirim', 'email tidak terkrim / koneksi lambat');  
+            
+            redirect('auth/Login'); 
+
+           }else{  
+            echo 'Success to send email';
+            $this->session->set_flashdata('terkirim', 'email address sudah dikirim, silakan cek email.');  
+               // redirect(site_url('auth/Login'),'refresh'); 
+            redirect('auth/Login');   
+           }  
+           
+         }  
+}
+  
+   public function base64url_encode($data) {   
+    return rtrim(strtr(base64_encode($data), '+/', '-_'), '=');   
+   }   
+   
+   public function base64url_decode($data) {   
+    return base64_decode(str_pad(strtr($data, '-_', '+/'), strlen($data) % 4, '=', STR_PAD_RIGHT));   
+   }
+
+
+
+     
+       
 
 }

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -51,37 +53,56 @@
                     <div class="widget-main">
                       <h4 class="header blue lighter bigger">
                         <i class="ace-icon fa fa-coffee green"></i>
-                        Please Enter Your Information
+                        Please Enter Your email
                       </h4>
 
                       <div class="space-6"></div>
-
+	<?php if($this->session->flashdata('sukses') ) : ?>
+											<div class="alert alert-danger alert-dismissable">
+												<button type="button" class="close" data-dismiss="alert">
+													<i class="ace-icon fa fa-times"></i>
+												</button>
+												<?= $this->session->flashdata('sukses'); ?>
+											</div>
+										<?php endif; ?>
+										<?php if($this->session->flashdata('terkirim') ) : ?>
+											<div class="alert alert-success alert-dismissable">
+												<button type="button" class="close" data-dismiss="alert">
+													<i class="ace-icon fa fa-times"></i>
+												</button>
+												<?= $this->session->flashdata('terkirim'); ?>
+											</div>
+										<?php endif; ?>
+										<?php if($this->session->flashdata('flash') ) : ?>
+										<div class="alert alert-success alert-dismissable">
+											<button type="button" class="close" data-dismiss="alert">
+												<i class="ace-icon fa fa-times"></i>
+											</button>
+											<?= $this->session->flashdata('flash'); ?>
+										</div>
+									<?php endif; ?>
               
-                <form action ="<?php echo base_url()."auth/login"; ?>" method="post">
-                        <fieldset>
-                          <label class="block clearfix">
-                            <span class="block input-icon input-icon-right">
-                              <input type="text" name="identity" id="username" class="form-control" placeholder="Username" />
-                              <i class="ace-icon fa fa-user"></i>
-                            </span>
-                          </label>
+              	<?php $attributes = array('method' => 'post','class' => 'text-center', 'role' => 'form','form-auth-small');
+												echo form_open('auth/sendCredential', $attributes);?> 
+
+<!--                 <form action ="<?php echo base_url()."auth/login"; ?>" method="post">
+ -->                        <fieldset>
+                        
 
                           <label class="block clearfix">
                             <span class="block input-icon input-icon-right">
-                              <input type="password" name="password" id="password" class="form-control" placeholder="Password" />
-                             
-                              <i class="ace-icon fa fa-lock"></i>
+                           	<input type="email" class="form-control" id="username" name="email" placeholder="email" value="<?php echo set_value('email'); ?>" required>
+                              <i class="ace-icon fa "></i>
                             </span>
                           </label>
 
                           <div class="space"></div>
 
-                            <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
-                              <i class="ace-icon fa fa-key"></i>
-                              <span class="bigger-110">Login</span>
-                            </button>
-                          <div class="bottom">
-                          <span class="helper-text"> <a href="<?php echo base_url()."auth/lupa_password"; ?>">Forgot password?</a></span>
+                           								<button type="submit" class="btn btn-primary btn-lg btn-block">submit</button>
+
+                        	<div class="bottom">
+									<span class="helper-text"> <a href="<?php echo base_url()."auth/login"; ?>">Back to login</a></span>
+								</div>
 
                           </div>
 
