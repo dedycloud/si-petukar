@@ -71,10 +71,12 @@ class Auth extends CI_Controller
 		$this->form_validation->set_rules('identity', str_replace(':', '', $this->lang->line('login_identity_label')), 'required');
 		$this->form_validation->set_rules('password', str_replace(':', '', $this->lang->line('login_password_label')), 'required');
 
+
 		if ($this->form_validation->run() === TRUE)
 		{
 			// check to see if the user is logging in
 			// check for "remember me"
+
 			$remember = (bool)$this->input->post('remember');
 
 			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))

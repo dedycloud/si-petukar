@@ -21,6 +21,7 @@
 
     
     <link rel="stylesheet" href="<?php echo base_url();?>assets/login/css/ace-rtl.min.css" />
+    <script src="<?php echo base_url();?>assets/login/js/ace-extra.min.js"></script>
 
     <script type="text/javascript">
     
@@ -55,17 +56,34 @@
                       </h4>
 
                       <div class="space-6"></div>
+<!--  <div class="alert alert-danger">
+                      <button type="button" class="close" data-dismiss="alert">
+                        <i class="ace-icon fa fa-times"></i>
+                      </button>
+                      <strong>Warning!</strong>
 
+                      Best
+                      <br />
+                    </div> -->
               
+              <?php if($this->session->flashdata('message') ) : ?>
+                      <div class="alert alert-danger alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert">
+                          <i class="ace-icon fa fa-times"></i>
+                        </button>
+                        <?= $this->session->flashdata('message'); ?>
+                      </div>
+                    <?php endif; ?>
+                  
                 <form action ="<?php echo base_url()."auth/login"; ?>" method="post">
                         <fieldset>
                           <label class="block clearfix">
                             <span class="block input-icon input-icon-right">
-                              <input type="text" name="identity" id="username" class="form-control" placeholder="Username" />
+                              <input type="text" name="identity" id="username"  class="form-control" placeholder="Username" />
                               <i class="ace-icon fa fa-user"></i>
                             </span>
                           </label>
-
+                        <?php echo form_error('identity'); ?>
                           <label class="block clearfix">
                             <span class="block input-icon input-icon-right">
                               <input type="password" name="password" id="password" class="form-control" placeholder="Password" />
@@ -73,6 +91,7 @@
                               <i class="ace-icon fa fa-lock"></i>
                             </span>
                           </label>
+                          <?php echo form_error('identity'); ?>
 
                           <div class="space"></div>
 
@@ -100,49 +119,17 @@
 
     <!--[if !IE]> -->
     <script src="<?php echo base_url();?>assets/login/js/jquery-2.1.4.min.js"></script>
+        <script src="<?php echo base_url();?>assets/login/js/bootstrap.min.js"></script>
 
+<!-- <script type="text/javascript">window.setTimeout(function() {
+    $(".alert").fadeTo(300, 0).slideUp(300, function(){
+        $(this).remove(); 
+    });
+}, 1500);</script> -->
     
     <script type="text/javascript">
       if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo base_url();?>assets/login/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
     </script>
 
-    <!-- inline scripts related to this page -->
-    <script type="text/javascript">
-      jQuery(function($) {
-       $(document).on('click', '.toolbar a[data-target]', function(e) {
-        e.preventDefault();
-        var target = $(this).data('target');
-        $('.widget-box.visible').removeClass('visible');//hide others
-        $(target).addClass('visible');//show target
-       });
-      });
-      
-      
-      
-      jQuery(function($) {
-       $('#btn-login-dark').on('click', function(e) {
-        $('body').attr('class', 'login-layout');
-        $('#id-text2').attr('class', 'white');
-        $('#id-company-text').attr('class', 'blue');
-        
-        e.preventDefault();
-       });
-       $('#btn-login-light').on('click', function(e) {
-        $('body').attr('class', 'login-layout light-login');
-        $('#id-text2').attr('class', 'grey');
-        $('#id-company-text').attr('class', 'blue');
-        
-        e.preventDefault();
-       });
-       $('#btn-login-blur').on('click', function(e) {
-        $('body').attr('class', 'login-layout blur-login');
-        $('#id-text2').attr('class', 'white');
-        $('#id-company-text').attr('class', 'light-blue');
-        
-        e.preventDefault();
-       });
-       
-      });
-    </script>
   </body>
 </html>
