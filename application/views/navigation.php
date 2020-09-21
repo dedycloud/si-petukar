@@ -22,7 +22,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="">
+              <img src="<?php echo base_url() ?>asset/dist/img/user2-160x160.jpg" class="user-image" alt="">
               <span class="hidden-xs">User</span>
             </a>
             <ul class="dropdown-menu">
@@ -39,12 +39,12 @@
               <li class="user-body">
                 <div class="row">
                 <center> <p>
-                  Alexander Pierce 
+                 are you really to log out ?
                 </p></center>
 
                  <center> <p>
-                 Web Developer
-                  <small>Member since Nov. 2012</small>
+                 created : Politeknik Negeri Lampung
+                <!--   <small>Member since Nov. 2012</small> -->
                 </p></center>
                  </div>
 

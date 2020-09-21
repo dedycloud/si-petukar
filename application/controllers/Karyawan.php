@@ -24,6 +24,7 @@ class karyawan extends CI_Controller {
 		}
 	}
 	
+	
 	public function index()
 	{
 		$this->secure();

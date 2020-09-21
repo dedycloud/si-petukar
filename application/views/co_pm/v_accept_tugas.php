@@ -1,14 +1,13 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Data Tables
-        <small>advanced tables</small>
-      </h1>
+       <h1>
+      PTPN 7
+      <small>bandar lampung</small>
+    </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Data tables</li>
+        <li><a href="#">accept task</a></li>
       </ol>
     </section>
 
@@ -18,7 +17,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-            <h3 class="box-title">Accep tugas</h3>
+            <h3 class="box-title">setujui tugas</h3>
             	<!-- <a  href="<?php echo base_url() ; ?>managerunit/tambahtugas" ><span class="btn  btn-xs btn-primary  glyphicon-plus" > Create Tugas</a> -->
                  <?php if($this->session->flashdata('flashdataaccept') ) : ?>
       <div class="alert alert-success alert-dismissable">

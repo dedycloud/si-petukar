@@ -3,14 +3,13 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Timeline
-        <small>example</small>
-      </h1>
+         <h1>
+      PTPN 7
+      <small>bandar lampung</small>
+    </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">UI</a></li>
-        <li class="active">Timeline</li>
+        <li><a href="#">guide</a></li>
       </ol>
     </section>
 
