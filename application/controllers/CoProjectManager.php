@@ -117,6 +117,7 @@ class Coprojectmanager extends CI_Controller {
 
 	public function accept_task()
 	{
+		
 		$id_task = $this->input->post('id');
 
 		$createby = $this->session->userdata('user_id'); 
@@ -131,9 +132,10 @@ class Coprojectmanager extends CI_Controller {
 		$url = site_url() . 'karyawan/tampil_task';  
 		$link = '<a href="' . $url . '">' . 'see task ' . '</a>';   
 		$data['user'] = $this->ion_auth->user()->row();
-		$tujuan = $this->input->post('tujuan');
+$tujuan = $this->input->post('tujuan');
 
 		$namaemail= $this->m_coprojectmanager->get_email($tujuan);
+	
 		$username=$data['user']->username;
 		$message = '';             
 		$message .= '<strong> </strong><br>';  
@@ -407,7 +409,7 @@ class Coprojectmanager extends CI_Controller {
 		$this->email->set_newline("\r\n");  
 		$this->email->from('no-reply : ', 'Admin Ptpn7 ');   
 		$this->email->to($namaemail->email );   
-		$this->email->subject('Ubah Password');   
+		$this->email->subject('Persetujuan tugas');   
            $this->email->message( $message );  //amil pesan dari token
            if (!$this->email->send()) {  
             // show_error($this->email->print_debugger());   
@@ -720,7 +722,7 @@ class Coprojectmanager extends CI_Controller {
        	$this->email->set_newline("\r\n");  
        	$this->email->from('no-reply : ', 'Admin Ptpn7 ');   
        	$this->email->to($namaemail->email );   
-       	$this->email->subject('Ubah Password');   
+       	$this->email->subject('verivikasi tugas');   
            $this->email->message( $message );  //amil pesan dari token
            if (!$this->email->send()) {  
             // show_error($this->email->print_debugger());   

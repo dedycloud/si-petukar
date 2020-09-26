@@ -9,14 +9,14 @@ class M_projectmanager extends CI_Model{
 	}
 
 	function tampil_modul_by_divisi(){
-		$sql=" 	SELECT * FROM `tbl_modul`as a, tbl_bagian as b WHERE a.divisi = b.id GROUP BY a.divisi ";
+		$sql=" 	SELECT * FROM `tbl_modul`as a, tbl_modul_bagian as b WHERE a.bagian = b.id GROUP BY a.bagian ";
 
 		$result = $this->db->query($sql);
 		return $result->result();	
 	}
 
 	function tampil_karyawan_baru(){
-		$sql="SELECT m.username, p.nama_bagian FROM users as m ,groups as n, users_groups as o ,tbl_bagian as p  WHERE m.id = o.user_id and n.id =o.group_id and m.email NOT IN(SELECT c.email FROM users as c,tbl_tugas as a WHERE a.id_jenis ='2' AND c.id=a.id_tujuan group BY c.id ) and m.id_bagian = p.id and n.id = 3 GROUP BY m.id ";
+		$sql="SELECT m.username, p.nama_bagian FROM users as m ,groups as n, users_groups as o ,tbl_modul_bagian as p  WHERE m.id = o.user_id and n.id =o.group_id and m.email NOT IN(SELECT c.email FROM users as c,tbl_tugas as a WHERE a.id_jenis ='2' AND c.id=a.id_tujuan group BY c.id ) and m.id_bagian = p.id and n.id = 3 GROUP BY m.id ";
 
 		$result = $this->db->query($sql);
 		return $result->result();	
@@ -24,7 +24,7 @@ class M_projectmanager extends CI_Model{
 
 	
 	function tampil_all_divisi(){
-		$sql=" select * from tbl_bagian";
+		$sql=" select * from tbl_modul_bagian";
 
 		$result = $this->db->query($sql);
 		return $result->result_array();	
@@ -37,7 +37,7 @@ class M_projectmanager extends CI_Model{
 	}
 
 	function tampil_all_modul_by_divisi($divisi){
-		$sql=" SELECT *,a.id as id_divisi FROM `tbl_modul`as a, tbl_bagian as b WHERE a.divisi = b.id and a.divisi = '$divisi'";
+		$sql=" SELECT *,a.id as id_divisi FROM `tbl_modul`as a, tbl_modul_bagian as b WHERE a.bagian = b.id and a.bagian = '$divisi'";
 
 		$result = $this->db->query($sql);
 		return $result->result();	
@@ -83,7 +83,7 @@ class M_projectmanager extends CI_Model{
 	}
 
 	function edit_modul($id_task,$divisi){
-		$sql=" select * from tbl_modul where id = '$id_task' and divisi = $divisi";
+		$sql=" select * from tbl_modul where id = '$id_task' and bagian = $divisi";
 
 		$result = $this->db->query($sql);
 		return $result->result_array();
@@ -105,7 +105,7 @@ class M_projectmanager extends CI_Model{
 	}
 	function hapus_modul($id_task,$divisi){
 
-		$sql="delete from tbl_modul where id=$id_task and divisi = $divisi";
+		$sql="delete from tbl_modul where id=$id_task and bagian = $divisi";
 		$result = $this->db->query($sql);
 		return $result;
 
@@ -139,7 +139,7 @@ class M_projectmanager extends CI_Model{
 	}
 
 	function get_data_modul(){
-		$sql=" select * from tbl_modul ";
+		$sql="SELECT a.*,b.nama_bagian FROM `tbl_modul` as a , tbl_modul_bagian as b WHERE a.bagian = b.id ";
 
 		$result = $this->db->query($sql);
 		return $result->result_array();	

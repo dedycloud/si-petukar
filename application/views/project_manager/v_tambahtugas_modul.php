@@ -103,16 +103,6 @@
 
                   <input type="hidden"name="jenis" class="form-control" id="inputPassword3" value="2" placeholder="jenis">
 
-                <!--  <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Jenis</label>
-                  <div class="col-sm-10">
-                  <select class="form-control select2"name="jenis" style="width: 100%;" >
-                  <option>--Pilih--</option>
-                  <?php foreach($jenis as $row) : ?>
-            <option value="<?=$row['id'] ?>"><?=$row['jenis_tugas'] ?></option>   
-          <?php endforeach; ?>
-                </select>                  </div>
-              </div> -->
               <div class="col-sm-2"></div>
 
             <div class="col-sm-10">
@@ -128,7 +118,7 @@
                   <select class="form-control "name="modul[]" style="width: 100%;" >
                     <option value="">--Pilih--</option>
                     <?php foreach($modul as $row) : ?>
-                      <option value="<?=$row['id'] ?>"><?=$row['divisi'] ?> -> <?=$row['nama'] ?></option>   
+                      <option value="<?=$row['id'] ?>"><?=$row['nama_bagian'] ?> -> <?=$row['nama'] ?></option>   
                     <?php endforeach; ?>
                   </select>       
 

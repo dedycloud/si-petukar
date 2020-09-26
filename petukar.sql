@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2020 at 03:44 AM
+-- Generation Time: Sep 26, 2020 at 07:34 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.31
 
@@ -97,12 +97,36 @@ INSERT INTO `history_tugas` (`id`, `penyetuju`, `created_at`, `jangka_waktu`, `j
 (74, 4, '0000-00-00', '0000-00-00', 'sd', 'sfs', 2, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 2),
 (75, 4, '0000-00-00', '0000-00-00', 'sds', 'ds', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 2),
 (76, 4, '0000-00-00', '0000-00-00', 'oke', 'sd', 1, 'success', 'proccess', 'waiting_acept', 'failed', '', '2020-09-01', '2020-09-02', '2020-09-02', '2020-09-02', '0000-00-00', 2),
-(77, 4, '0000-00-00', '0000-00-00', 'dsd', 'sds', 2, '', 'proccess', 'waiting_acept', '', '', '2020-09-01', '2020-09-06', '0000-00-00', '0000-00-00', '0000-00-00', 8),
+(77, 4, '0000-00-00', '0000-00-00', 'dsd', 'sds', 2, 'success', 'proccess', 'waiting_acept', '', '', '2020-09-01', '2020-09-06', '0000-00-00', '2020-09-26', '0000-00-00', 8),
 (78, 0, '0000-00-00', '0000-00-00', '', '', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 0),
 (79, 0, '0000-00-00', '0000-00-00', '', '', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 0),
 (80, 4, '0000-00-00', '0000-00-00', 'a', 'dd', 2, '', 'proccess', '', '', '', '2020-09-02', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 2),
 (81, 4, '0000-00-00', '0000-00-00', 'ini percobaan', 'j', 2, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 10),
-(82, 4, '0000-00-00', '0000-00-00', 'ini percobaan', 'ok3', 2, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 11);
+(82, 4, '0000-00-00', '0000-00-00', 'ini percobaan', 'ok3', 2, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 11),
+(83, 0, '0000-00-00', '0000-00-00', 'd', '', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 0),
+(84, 0, '0000-00-00', '0000-00-00', 'ds', '', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 0),
+(85, 0, '0000-00-00', '0000-00-00', 'ds', '', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 0),
+(86, 0, '0000-00-00', '0000-00-00', 'sa', '', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 0),
+(87, 0, '0000-00-00', '0000-00-00', 's', '', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 0),
+(88, 0, '0000-00-00', '0000-00-00', 'a', '', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 0),
+(89, 0, '0000-00-00', '0000-00-00', 'sda', '', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 0),
+(90, 0, '0000-00-00', '0000-00-00', 'dsd', '', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 0),
+(91, 4, '0000-00-00', '0000-00-00', 'okes', 'sa', 1, '', 'proccess', '', '', '', '2020-09-19', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 2),
+(92, 0, '0000-00-00', '0000-00-00', '', '', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 0),
+(93, 0, '0000-00-00', '0000-00-00', 's', '', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 0),
+(94, 4, '0000-00-00', '0000-00-00', 'task oke', 'n', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 8),
+(95, 0, '0000-00-00', '0000-00-00', '', '', 2, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 0),
+(96, 0, '0000-00-00', '0000-00-00', '', '', 2, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 0),
+(97, 4, '0000-00-00', '0000-00-00', 'ini percobaan', 'w', 2, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 11),
+(98, 4, '0000-00-00', '0000-00-00', 'ini percobaan email ', 'oke', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 16),
+(99, 4, '0000-00-00', '0000-00-00', 'ini percobaan emaila', 'a', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 16),
+(100, 4, '0000-00-00', '0000-00-00', 'tugas email', '', 1, 'success', 'proccess', 'waiting_acept', '', '', '2020-09-26', '2020-09-26', '0000-00-00', '2020-09-26', '0000-00-00', 16),
+(101, 4, '0000-00-00', '0000-00-00', 'task oke email', '', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 16),
+(102, 4, '0000-00-00', '0000-00-00', 'ini percobaan email', '', 1, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 16),
+(103, 4, '0000-00-00', '0000-00-00', 'sas', '', 1, '', 'proccess', 'waiting_acept', '', '', '2020-09-26', '2020-09-26', '0000-00-00', '0000-00-00', '0000-00-00', 16),
+(104, 4, '0000-00-00', '0000-00-00', 'task oke email', '', 1, 'success', 'proccess', 'waiting_acept', '', '', '2020-09-26', '2020-09-26', '0000-00-00', '2020-09-26', '0000-00-00', 16),
+(105, 4, '0000-00-00', '0000-00-00', 'ini percobaan email', '', 2, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 16),
+(106, 4, '0000-00-00', '0000-00-00', 'task oke', 'sa', 2, '', '', '', '', '', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', '0000-00-00', 16);
 
 -- --------------------------------------------------------
 
@@ -116,13 +140,6 @@ CREATE TABLE `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `login_attempts`
---
-
-INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
-(6, '::1', 'dedyindra351@gmail.com', 1600486585);
 
 -- --------------------------------------------------------
 
@@ -142,17 +159,6 @@ CREATE TABLE `tbl_bagian` (
 INSERT INTO `tbl_bagian` (`id`, `nama_bagian`) VALUES
 (1, 'erp'),
 (2, 'it');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_jabatan`
---
-
-CREATE TABLE `tbl_jabatan` (
-  `id` int(11) NOT NULL,
-  `nama_jabatan` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -183,19 +189,38 @@ CREATE TABLE `tbl_modul` (
   `id` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `deskripsi` text NOT NULL,
-  `divisi` int(11) NOT NULL
+  `bagian` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_modul`
 --
 
-INSERT INTO `tbl_modul` (`id`, `nama`, `deskripsi`, `divisi`) VALUES
+INSERT INTO `tbl_modul` (`id`, `nama`, `deskripsi`, `bagian`) VALUES
 (1, 'human resource management', 'menimbang kelapa sawit', 1),
 (2, 'sales management', 'pembuatan laporan penjualan yang lengkap', 1),
 (3, 'accounting management', 'mengelola arus kas', 1),
-(4, 'baru', 'oke', 2),
-(6, 'oke', 'mantap', 2);
+(6, 'oke', 'mantap', 2),
+(11, 'sasasasa', 'oke', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_modul_bagian`
+--
+
+CREATE TABLE `tbl_modul_bagian` (
+  `id` int(11) NOT NULL,
+  `nama_bagian` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_modul_bagian`
+--
+
+INSERT INTO `tbl_modul_bagian` (`id`, `nama_bagian`) VALUES
+(1, 'Accounting Management'),
+(2, 'Inventory Management');
 
 -- --------------------------------------------------------
 
@@ -240,7 +265,15 @@ INSERT INTO `tbl_modul_tugas` (`id`, `id_tugas`, `id_modul`, `status`, `file`) V
 (31, 81, 1, 'proccess', 'not add file'),
 (32, 81, 1, 'proccess', 'not add file'),
 (33, 82, 1, 'proccess', 'not add file'),
-(34, 82, 2, 'proccess', 'not add file');
+(34, 82, 2, 'proccess', 'not add file'),
+(35, 95, 0, 'proccess', 'not add file'),
+(36, 95, 0, 'proccess', 'not add file'),
+(37, 97, 1, 'proccess', 'not add file'),
+(38, 97, 1, 'proccess', 'not add file'),
+(39, 105, 0, 'proccess', 'not add file'),
+(40, 106, 1, 'proccess', 'not add file'),
+(41, 106, 2, 'proccess', 'not add file'),
+(42, 106, 3, 'proccess', 'not add file');
 
 -- --------------------------------------------------------
 
@@ -277,10 +310,31 @@ INSERT INTO `tbl_tugas` (`id`, `id_tujuan`, `jangka_waktu`, `judul_tugas`, `desk
 (64, 8, '0000-00-00', 'stugass mumut', '', 'MacBook_Pro_-_3214.jpg', 1, 4, '2020-08-30', '3', '2020-09-01', '4', 'failed', 'gabole'),
 (65, 8, '2020-08-31', 'tugas revuisian', 'oke', 'image.png', 1, 4, '2020-08-30', '3', '2020-08-30', '4', 'success', 'ga boke'),
 (76, 2, '2020-09-10', 'oke', 'sd', 'MacBook_Pro_-_3219.jpg', 1, 4, '2020-09-01', '3', '2020-09-02', '4', 'success', 'no'),
-(77, 8, '2020-09-16', 'dsd', 'sds', '', 2, 4, '2020-09-01', '3', '2020-09-06', '8', 'waiting_accept', ''),
-(80, 2, '2020-09-18', 'a', 'dd', '', 2, 4, '2020-09-02', '3', '2020-09-06', '2', 'proccess', ''),
+(77, 8, '2020-09-16', 'dsd', 'sds', '', 2, 4, '2020-09-01', '3', '2020-09-26', '4', 'success', ''),
+(80, 2, '2020-09-18', 'a', 'dd', '', 2, 4, '2020-09-02', '3', '2020-09-21', '2', 'proccess', ''),
 (81, 10, '2020-09-11', 'ini percobaan', 'j', '', 2, 4, '2020-09-05', '3', '0000-00-00', '', 'available', ''),
-(82, 11, '2020-09-14', 'ini percobaan', 'ok3', '', 2, 4, '2020-09-06', '3', '0000-00-00', '', 'available', '');
+(83, 0, '2020-09-09', 'd', '', '', 1, 0, '2020-09-19', '3', '0000-00-00', '', 'available', ''),
+(84, 0, '2020-09-14', 'ds', '', '', 1, 0, '2020-09-19', '3', '0000-00-00', '', 'available', ''),
+(85, 0, '2020-09-04', 'ds', '', '', 1, 0, '2020-09-19', '3', '0000-00-00', '', 'available', ''),
+(86, 0, '2020-09-24', 'sa', '', '', 1, 0, '2020-09-19', '3', '0000-00-00', '', 'available', ''),
+(87, 0, '2020-09-18', 's', '', '', 1, 0, '2020-09-19', '3', '0000-00-00', '', 'available', ''),
+(88, 0, '2020-09-02', 'a', '', '', 1, 0, '2020-09-19', '3', '0000-00-00', '', 'available', ''),
+(89, 0, '2020-09-24', 'sda', '', '', 1, 0, '2020-09-19', '3', '0000-00-00', '', 'available', ''),
+(90, 0, '2020-09-18', 'dsd', '', '', 1, 0, '2020-09-19', '3', '0000-00-00', '', 'available', ''),
+(91, 2, '2020-09-20', 'okes', 'sa', '', 1, 4, '2020-09-19', '3', '2020-09-21', '2', 'proccess', ''),
+(92, 0, '0000-00-00', '', '', '', 1, 0, '2020-09-19', '3', '0000-00-00', '', 'available', ''),
+(93, 0, '0000-00-00', 's', '', '', 1, 0, '2020-09-19', '3', '0000-00-00', '', 'available', ''),
+(95, 0, '0000-00-00', '', '', '', 2, 0, '2020-09-19', '3', '0000-00-00', '', 'available', ''),
+(96, 0, '0000-00-00', '', '', '', 2, 0, '2020-09-19', '3', '0000-00-00', '', 'available', ''),
+(97, 11, '2020-10-03', 'ini percobaan', 'w', '', 2, 4, '2020-09-19', '3', '0000-00-00', '', 'available', ''),
+(98, 16, '2020-10-03', 'ini percobaan email ', 'oke', '', 1, 4, '2020-09-26', '3', '0000-00-00', '', 'available', ''),
+(100, 16, '2020-09-23', 'tugas email', '', 'ATDD___TDD2.jpg', 1, 4, '2020-09-26', '3', '2020-09-26', '4', 'success', ''),
+(101, 16, '2020-09-25', 'task oke email', '', '', 1, 4, '2020-09-26', '3', '0000-00-00', '', 'available', ''),
+(102, 16, '2020-09-29', 'ini percobaan email', '', '', 1, 4, '2020-09-26', '3', '0000-00-00', '', 'available', ''),
+(103, 16, '2020-09-29', 'sas', '', 'ATDD___TDD1.jpg', 1, 4, '2020-09-26', '3', '2020-09-26', '16', 'waiting_accept', ''),
+(104, 16, '2020-09-30', 'task oke email', '', 'ATDD___TDD.jpg', 1, 4, '2020-09-26', '3', '2020-09-26', '4', 'success', ''),
+(105, 16, '2020-09-30', 'ini percobaan email', '', '', 2, 4, '2020-09-26', '3', '0000-00-00', '', 'available', ''),
+(106, 16, '2020-09-30', 'task oke', 'sa', '', 2, 4, '2020-09-26', '3', '0000-00-00', '', 'available', '');
 
 --
 -- Triggers `tbl_tugas`
@@ -351,7 +405,9 @@ CREATE TABLE `tokens` (
 --
 
 INSERT INTO `tokens` (`id`, `user_id`, `token`, `created`) VALUES
-(20, '16', 4, '2020-09-19');
+(20, '16', 4, '2020-09-19'),
+(21, '16', 0, '2020-09-19'),
+(22, '16', 0, '2020-09-19');
 
 -- --------------------------------------------------------
 
@@ -379,7 +435,6 @@ CREATE TABLE `users` (
   `last_name` varchar(50) DEFAULT NULL,
   `company` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
-  `id_jabatan` int(11) NOT NULL,
   `id_bagian` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -387,16 +442,16 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`, `id_jabatan`, `id_bagian`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$ylyDzLYv7yrwn7pCMd4Q5.QYBTTCZjikRYWwhaDIJoPJGRF7FATGa', 'admin@admin.com', NULL, '1', NULL, NULL, NULL, NULL, NULL, 1268889823, 1599366463, 1, 'Admin', 'istrator', 'ADMIN', '0', 0, 1),
-(2, '::1', 'rivalino', '$2y$10$GLkkGa2OYn3pgAOEgnpKQ.Y9xArh/ngWTlzDmZDIJVyDN2YetSyIO', 'rivalino@gmail.com', NULL, '1', NULL, NULL, NULL, NULL, NULL, 1589472383, 1599365041, 1, 'Rivalino', 'lino', 'ptpn7', '086662223', 0, 1),
-(3, '', 'nugraha', '$2y$10$Uc6x/aEKToQxJK4SEapm1.1Gs.3UfkOfNMZuiidfmR62gb0b.AMdy', 'nugraha@gmail.com', NULL, '1', NULL, NULL, NULL, NULL, NULL, 0, 1599366116, 1, 'ela', 'lalala', NULL, NULL, 0, 1),
-(4, '', 'ela', '$2y$10$fMb0ODomQJtXos4MHgHB7.hd5N6p5jTyNmWvN/U1SnBaQt1xTy2fG', 'ella@gmail.com', NULL, '1', NULL, NULL, NULL, NULL, NULL, 0, 1599365361, 1, 'rahmadi', 'rahmat', NULL, NULL, 0, 1),
-(8, '', 'mumut', '$2y$10$fMb0ODomQJtXos4MHgHB7.hd5N6p5jTyNmWvN/U1SnBaQt1xTy2fG', 'mumut@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1599366078, 1, 'mumut', 'marmut', NULL, NULL, 0, 1),
-(10, '::1', 'okrhh', '$2y$10$fsLiJcxSHKSY4BQV2mNdCOY4Y5qgp1Duklv2iX/GVQLqHyo9UqFa.', 'dedy.setiawan@aux.dkatalis.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1599308527, NULL, 1, 'dedy', 'dda', NULL, NULL, 0, 2),
-(11, '::1', 'dedyw', '$2y$10$A3vtgSwUiOTmrsxlLPgcauKFd7zMQvEfyelBplrD2NA.j.2vNji3m', 'yuke.priantoko@dkatalis.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1599318368, NULL, 1, 'dedy', 'ok', NULL, NULL, 0, 1),
-(16, '::1', 'hh', '$2y$10$q44AuDh2.lLiB4bASTXgNehuVkSN9OPp0TozH/8/GarkWSekOrVg.', 'dedyindra352@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1599320878, 1600486928, 1, 'azka', 'yy', NULL, NULL, 0, 2),
-(17, '::1', 'kaya ', '$2y$10$o87knInYWrLk4btS/f3MO.ToKqFcYslDUAQN/Wh/UK4JYzeYHbFwK', 'as@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1599321479, NULL, 1, 'dezda', 'asa', NULL, NULL, 0, 1);
+INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`, `id_bagian`) VALUES
+(1, '127.0.0.1', 'administrator', '$2y$12$ylyDzLYv7yrwn7pCMd4Q5.QYBTTCZjikRYWwhaDIJoPJGRF7FATGa', 'admin@admin.com', NULL, '1', NULL, NULL, NULL, NULL, NULL, 1268889823, 1601103415, 1, 'Admin', 'istrator', 'ADMIN', '0', 1),
+(2, '::1', 'rivalino', '$2y$10$GLkkGa2OYn3pgAOEgnpKQ.Y9xArh/ngWTlzDmZDIJVyDN2YetSyIO', 'rivalino@gmail.com', NULL, '1', NULL, NULL, NULL, NULL, NULL, 1589472383, 1601093015, 1, 'Rivalino', 'lino', 'ptpn7', '086662223', 1),
+(3, '', 'nugraha', '$2y$10$Uc6x/aEKToQxJK4SEapm1.1Gs.3UfkOfNMZuiidfmR62gb0b.AMdy', 'nugraha@gmail.com', NULL, '1', NULL, NULL, NULL, NULL, NULL, 0, 1601103765, 1, 'ela', 'lalala', NULL, NULL, 1),
+(4, '', 'ela', '$2y$10$fMb0ODomQJtXos4MHgHB7.hd5N6p5jTyNmWvN/U1SnBaQt1xTy2fG', 'ella@gmail.com', NULL, '1', NULL, NULL, NULL, NULL, NULL, 0, 1601102206, 1, 'rahmadi', 'rahmat', NULL, NULL, 1),
+(8, '', 'mumut', '$2y$10$fMb0ODomQJtXos4MHgHB7.hd5N6p5jTyNmWvN/U1SnBaQt1xTy2fG', 'mumut@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1599366078, 1, 'mumut', 'marmut', NULL, NULL, 1),
+(10, '::1', 'okrhh', '$2y$10$fsLiJcxSHKSY4BQV2mNdCOY4Y5qgp1Duklv2iX/GVQLqHyo9UqFa.', 'dedy.setiawan@aux.dkatalis.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1599308527, NULL, 1, 'dedy', 'dda', NULL, NULL, 2),
+(11, '::1', 'dedyw', '$2y$10$A3vtgSwUiOTmrsxlLPgcauKFd7zMQvEfyelBplrD2NA.j.2vNji3m', 'yuke.priantoko@dkatalis.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1599318368, NULL, 1, 'dedy', 'ok', NULL, NULL, 1),
+(16, '::1', 'hh', '$2y$10$q44AuDh2.lLiB4bASTXgNehuVkSN9OPp0TozH/8/GarkWSekOrVg.', 'dedyindra352@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1599320878, 1601102168, 1, 'azka', 'yy', NULL, NULL, 2),
+(17, '::1', 'kaya ', '$2y$10$o87knInYWrLk4btS/f3MO.ToKqFcYslDUAQN/Wh/UK4JYzeYHbFwK', 'as@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1599321479, NULL, 1, 'dezda', 'asa', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -455,12 +510,6 @@ ALTER TABLE `tbl_bagian`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_jabatan`
---
-ALTER TABLE `tbl_jabatan`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `tbl_jenis_tugas`
 --
 ALTER TABLE `tbl_jenis_tugas`
@@ -470,6 +519,12 @@ ALTER TABLE `tbl_jenis_tugas`
 -- Indexes for table `tbl_modul`
 --
 ALTER TABLE `tbl_modul`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_modul_bagian`
+--
+ALTER TABLE `tbl_modul_bagian`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -524,19 +579,13 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_bagian`
 --
 ALTER TABLE `tbl_bagian`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `tbl_jabatan`
---
-ALTER TABLE `tbl_jabatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_jenis_tugas`
@@ -548,25 +597,31 @@ ALTER TABLE `tbl_jenis_tugas`
 -- AUTO_INCREMENT for table `tbl_modul`
 --
 ALTER TABLE `tbl_modul`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `tbl_modul_bagian`
+--
+ALTER TABLE `tbl_modul_bagian`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_modul_tugas`
 --
 ALTER TABLE `tbl_modul_tugas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `tbl_tugas`
 --
 ALTER TABLE `tbl_tugas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT for table `tokens`
 --
 ALTER TABLE `tokens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `users`

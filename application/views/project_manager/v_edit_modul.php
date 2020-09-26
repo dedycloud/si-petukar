@@ -29,7 +29,7 @@
 					<!-- form start -->
 					            <?php foreach ($view_edit_modul as $row): ?>					
 
-					<form class="form-horizontal"action="<?php echo base_url(). 'projectmanager/actiontambahmodul'; ?>" method="post"
+					<form class="form-horizontal"action="<?php echo base_url(). 'projectmanager/actioneditmodul'; ?>" method="post"
 						>
 						<div class="box-body">
             	<input type="hidden" name="id" value="<?php echo $row['id']; ?>" />

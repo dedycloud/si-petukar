@@ -161,7 +161,7 @@
         "    <select class='form-control select2'name='modul[]' style='width: 100%;' >" +
         "<option>--Pilih--</option>"+
         " <?php foreach($modul as $row) : ?>"+
-        "  <option value='<?=$row['id'] ?>'><?=$row['divisi'] ?> -><?=$row['nama'] ?></option>  "+
+        "  <option value='<?=$row['id'] ?>'><?=$row['nama_bagian'] ?> -><?=$row['nama'] ?></option>  "+
         "  <?php endforeach; ?>"+
 
 

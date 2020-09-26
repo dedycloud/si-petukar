@@ -458,7 +458,7 @@ class Projectmanager extends CI_Controller {
 			$this->email->set_newline("\r\n");  
 			$this->email->from('no-reply : ', 'Admin Ptpn7 ');   
 			$this->email->to($namaemail->email);   
-			$this->email->subject('Ubah Password');   
+			$this->email->subject('Tugas Baru ');   
            $this->email->message( $message );  //amil pesan dari token
            if (!$this->email->send()) {  
             // show_error($this->email->print_debugger());   
@@ -872,7 +872,7 @@ class Projectmanager extends CI_Controller {
 
    	$data = array(
 
-   		'divisi' => $tujuan,
+   		'bagian' => $tujuan,
    		'nama' => $nama,
    		'deskripsi' => $deskripsi,
 
@@ -921,6 +921,25 @@ class Projectmanager extends CI_Controller {
    	$this->load->view('footer');
    }
 
+public function edit_taskmodul($id_task )
+   {
+   	$this->secure();
+   	$data['tujuan'] =$this->m_projectmanager->get_data_tujuan();
+       	$data['karyawan'] =$this->m_projectmanager->tampil_karyawan_baru();
+       	$data['penyetuju'] =$this->m_projectmanager->get_data_penyetuju();
+       	$data['modul'] =$this->m_projectmanager->get_data_modul();
+   	$data['view_edit_tugas'] = $this->m_projectmanager->edit_task($id_task);
+   	$data['user'] = $this->ion_auth->user()->row();
+   	$username=$data['user']->username;
+   	$group=$this->ion_auth->get_users_groups()->row()->id;
+   	$data['group']=$group;
+   	$this->load->view('header',$data);
+   	$this->load->view('navigation');
+   	$this->load->view('sidebar',$data);
+   	$this->load->view('project_manager/v_edit_tugas_modul',$data);
+   	$this->load->view('footer');
+   }
+
    public function edit_modul($id_task =0,$divisi =0)
    {
    	$this->secure();
@@ -935,6 +954,29 @@ class Projectmanager extends CI_Controller {
    	$this->load->view('sidebar',$data);
    	$this->load->view('project_manager/v_edit_modul',$data);
    	$this->load->view('footer');
+   }
+
+  public function actioneditmodul()
+   {
+
+    	$tujuan = $this->input->post('bagian');
+    	$id= $this->input->post('id');
+
+   	$nama = $this->input->post('judul_modul');
+   	$deskripsi = $this->input->post('deskripsi');
+
+
+   	$data = array(
+
+   		'bagian' => $tujuan,
+   		'nama' => $nama,
+   		'deskripsi' => $deskripsi,
+
+   	);
+   	$this->m_projectmanager->update_data($id,$data,'tbl_modul');
+  	$this->session->set_flashdata('flashdatatambah', 'Data berhasil di tambah');
+
+   	redirect('projectmanager/tampil_modul');
    }
 
    public function actionedittugas()
