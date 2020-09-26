@@ -60,6 +60,12 @@ class M_projectmanager extends CI_Model{
 		return $result->row();
 	}
 
+	function get_email($username){
+			$sql="SELECT email FROM `users` WHERE id = '$username' limit 1";
+		$result = $this->db->query($sql);
+		return $result->row();
+	}
+
 
 
 	function detail_create_task($id_detail){

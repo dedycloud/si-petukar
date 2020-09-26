@@ -27,6 +27,12 @@ class M_coprojectmanager extends CI_Model{
 		$result = $this->db->query($sql);
 		return $result->result_array();	
 	}
+		function get_email($username){
+			$sql="SELECT email FROM `users` WHERE id = '$username' limit 1";
+		$result = $this->db->query($sql);
+		return $result->row();
+	}
+
 
 	function accept_task($data, $id_task, $table){
 	

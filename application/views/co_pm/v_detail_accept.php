@@ -178,6 +178,7 @@
             </div>
             <form class="form-horizontal"action="<?php echo base_url(). 'Coprojectmanager/accept_task/'; ?>" method="post">
               <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
+              <input type="hidden" name="tujuan" value="<?php echo $row['tujuan']; ?>" />
 
               <div class="modal-body">
                 <p>One fine body&hellip;</p>
@@ -206,6 +207,7 @@
             </div>
             <form class="form-horizontal"action="<?php echo base_url(). 'Coprojectmanager/rejected_task/'; ?>" method="post">
               <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
+              <input type="hidden" name="tujuan" value="<?php echo $row['tujuan']; ?>" />
 
               <div class="modal-body">
                 <div class="form-group">
