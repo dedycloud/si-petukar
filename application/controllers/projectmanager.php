@@ -908,7 +908,8 @@ class Projectmanager extends CI_Controller {
    public function edit_task($id_task )
    {
    	$this->secure();
-
+	$data['tujuan'] =$this->m_projectmanager->get_data_tujuan();
+       	$data['penyetuju'] =$this->m_projectmanager->get_data_penyetuju();
    	$data['view_edit_tugas'] = $this->m_projectmanager->edit_task($id_task);
    	$data['user'] = $this->ion_auth->user()->row();
    	$username=$data['user']->username;

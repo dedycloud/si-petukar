@@ -33,24 +33,41 @@
 
               <div class="box-body">
                 
-
-				<div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Tujuan</label>
-
-                  <div class="col-sm-10">
-                    <input type="text"name="tujuan"value="<?php echo $row['id_tujuan']; ?>"
- 						class="form-control" id="inputEmail3" placeholder="tujuan">
-                  </div>
-                </div>
-
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Penyetuju</label>
+                <label for="inputEmail3" class="col-sm-2 control-label">Tujuan</label>
 
-                  <div class="col-sm-10">
-                    <input type="text"name="penyetuju"value="<?php echo $row['id_penyetuju']; ?>"
-            class="form-control" id="inputEmail3" placeholder="penyetuju">
-                  </div>
+                <div class="col-sm-10">
+                  <select class="form-control select2"name="tujuan" style="width: 100%;" >
+                    <option value="" >--Pilih--</option>
+                    <?php foreach($tujuan as $u) : ?>
+                      <!-- -->
+                      <option  value="<?=$u['id'] ?>"><?=$u['username'] ?></option>   
+
+                    <?php endforeach; ?>
+
+                  </select>  
+                        <span class="text-danger"><?php echo form_error('tujuan'); ?></span>
+
                 </div>
+              </div>
+
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Penyetuju</label>
+
+                <div class="col-sm-10">
+                  <select class="form-control select2" name="penyetuju" style="width: 100%;" >
+                    <option value="" >--Pilih--</option>
+                    <?php foreach($penyetuju as $rows) : ?>
+                      <!-- -->
+                      <option  value="<?=$rows['id'] ?>"><?=$rows['username'] ?></option>   
+
+                    <?php endforeach; ?>
+
+                  </select>     
+                        <span class="text-danger"><?php echo form_error('penyetuju'); ?></span>
+
+                </div>
+              </div>
 
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">Jangka Waktu</label>
