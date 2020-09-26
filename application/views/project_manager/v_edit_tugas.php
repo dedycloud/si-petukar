@@ -79,21 +79,7 @@
                   </div>
                 </div>
 
-                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Jenis</label>
-
-                  <div class="col-sm-10">
-				          <select class="form-control select2"name="jenis" style="width: 100%;" >
-                  <option selected="selected">--Pilih--</option>
-                  <option>Alaska</option>
-                  <option>California</option>
-                  <option>Delaware</option>
-                  <option>Tennessee</option>
-                  <option>Texas</option>
-                  <option>Washington</option>
-                </select>                  </div>
-                </div>
-
+             
                 <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
                     <div class="checkbox">
