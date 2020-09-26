@@ -449,7 +449,7 @@ class Projectmanager extends CI_Controller {
 				'smtp_host' => 'ssl://smtp.googlemail.com',  
 				'smtp_port' => 465,  
 				'smtp_user' => 'dedyindra120@gmail.com', 
-				'smtp_pass' => '20121997',   
+				'smtp_pass' => 'xxxxxxxx',   
 				'mailtype' => 'html',   
 				'charset' => 'iso-8859-1'  
 			);  
@@ -816,7 +816,7 @@ class Projectmanager extends CI_Controller {
    			'smtp_host' => 'ssl://smtp.googlemail.com',  
    			'smtp_port' => 465,  
    			'smtp_user' => 'dedyindra120@gmail.com', 
-   			'smtp_pass' => '20121997',   
+   			'smtp_pass' => 'xxxxxxxx',   
    			'mailtype' => 'html',   
    			'charset' => 'iso-8859-1'  
    		);  
