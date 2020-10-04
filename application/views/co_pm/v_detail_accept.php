@@ -214,7 +214,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">Komentar</label>
 
                   <div class="col-sm-10">
-                    <textarea class="form-control"name="Komentar" rows="3" placeholder="Komentar..."></textarea>
+                    <textarea class="form-control"name="Komentar" rows="3" placeholder="Komentar..." required></textarea>
                   </div>
                 </div>
               </div>

@@ -84,9 +84,9 @@
 									<div class="col-sm-10">
 										<select class="form-control select2"name="group" style="width: 100%;" >
 											<option>--Pilih--</option>
-											<?php foreach($groups as $row) : ?>
+											<?php foreach($groups as $u) : ?>
 												<!-- -->
-												<option value="<?=$row['id'] ?>"><?=$row['name'] ?></option>   
+												<option <?php if($u['id'] == $row->group_id){ echo 'selected="selected"'; } ?>   value="<?=$u['id'] ?>"><?=$u['name'] ?></option>   
 
 											<?php endforeach; ?>
 
@@ -102,9 +102,9 @@
 									<div class="col-sm-10">
 										<select class="form-control select2"name="bagian" style="width: 100%;" >
 											<option>--Pilih--</option>
-											<?php foreach($bagian as $row) : ?>
+											<?php foreach($bagian as $rows) : ?>
 												<!-- -->
-												<option value="<?=$row['id'] ?>"><?=$row['nama_bagian'] ?></option>   
+												<option  <?php if($rows['id'] == $row->id_bagian){ echo 'selected="selected"'; } ?>   value="<?=$rows['id'] ?>"><?=$rows['nama_bagian'] ?></option>   
 
 											<?php endforeach; ?>
 
@@ -123,7 +123,6 @@
 								
 								<!-- /.box-body -->
 								<div class="box-footer">
-									<button type="submit" class="btn btn-default">Cancel</button>
 									<button type="submit" class="btn btn-info pull-right">Send</button>
 								</div>
 								<!-- /.box-footer -->

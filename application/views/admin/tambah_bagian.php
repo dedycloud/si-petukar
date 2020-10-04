@@ -38,7 +38,7 @@
 									<label for="inputPassword3" class="col-sm-2 control-label">Nama Bagian</label>
 
 									<div class="col-sm-10">
-										<input type="text"name="nama_bagian" class="form-control" id="inputPassword3" placeholder="judul_tugas" required>
+										<input type="text"name="nama_bagian" class="form-control" id="inputPassword3" placeholder="nama bagian" required>
 
 									</div>
 								</div>
@@ -56,7 +56,7 @@
 								
 								<!-- /.box-body -->
 								<div class="box-footer">
-									<button type="submit" class="btn btn-default">Cancel</button>
+									<!-- <button type="submit" class="btn btn-default">Cancel</button> -->
 									<button type="submit" class="btn btn-info pull-right">Send</button>
 								</div>
 								<!-- /.box-footer -->

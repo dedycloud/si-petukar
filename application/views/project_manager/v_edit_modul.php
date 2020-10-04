@@ -43,7 +43,7 @@
 										<option>--Pilih--</option>
 										<?php foreach($divisi as $rows) : ?>
 											<!-- -->
-											<option value="<?= $rows['id'] ?>"><?=$rows['nama_bagian'] ?></option>   
+											<option  <?php if($rows['id'] == $row['bagian']){ echo 'selected="selected"'; } ?>  value="<?= $rows['id'] ?>"><?=$rows['nama_bagian'] ?></option>   
 
 										<?php endforeach; ?>
 

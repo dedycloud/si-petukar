@@ -41,7 +41,7 @@
                     <option value="" >--Pilih--</option>
                     <?php foreach($tujuan as $u) : ?>
                       <!-- -->
-                      <option  value="<?=$u['id'] ?>"><?=$u['username'] ?></option>   
+                      <option  <?php if($u['id'] == $row['id_tujuan']){ echo 'selected="selected"'; } ?>  value="<?=$u['id'] ?>"><?=$u['username'] ?></option>   
 
                     <?php endforeach; ?>
 
@@ -59,7 +59,7 @@
                     <option value="" >--Pilih--</option>
                     <?php foreach($penyetuju as $rows) : ?>
                       <!-- -->
-                      <option  value="<?=$rows['id'] ?>"><?=$rows['username'] ?></option>   
+                      <option   <?php if($rows['id'] == $row['id_penyetuju']){ echo 'selected="selected"'; } ?>   value="<?=$rows['id'] ?>"><?=$rows['username'] ?></option>   
 
                     <?php endforeach; ?>
 
@@ -73,7 +73,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">Jangka Waktu</label>
 
                   <div class="col-sm-10">
-                    <input type="date"name="jangka_waktu" class="form-control" id="inputEmail3" placeholder="jangka_waktu">
+                    <input type="date"name="jangka_waktu" class="form-control" value="<?php echo $row['jangka_waktu']; ?>" id="inputEmail3" placeholder="jangka_waktu">
                   </div>
                 </div>
 
@@ -91,8 +91,8 @@
                   <label for="inputEmail3" class="col-sm-2 control-label">Deskripsi Tugas</label>
 
                   <div class="col-sm-10">
-                  <textarea class="form-control"name="deskripsi"value="<?php echo $row['deskripsi_tugas']; ?>"
-						 rows="3" placeholder="deskripsi..."></textarea>
+                  <textarea class="form-control"name="deskripsi"
+						 rows="3" placeholder="deskripsi..."><?php echo $row['deskripsi_tugas']; ?></textarea>
                   </div>
                 </div>
 
@@ -107,7 +107,7 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-default">Cancel</button>
+                <!-- <button type="submit" class="btn btn-default">Cancel</button> -->
                 <button type="submit" class="btn btn-info pull-right">Send</button>
               </div>
               <!-- /.box-footer -->

@@ -45,7 +45,7 @@
 									<label for="inputEmail3" class="col-sm-2 control-label">Deskripsi </label>
 
 									<div class="col-sm-10">
-										<input class="form-control"name="deskripsi" value="<?= $row->description ?>" rows="3" placeholder="deskripsi..."></input>
+										<textarea class="form-control"name="deskripsi"  rows="3" placeholder="deskripsi..."><?= $row->description ?></textarea>
 									</div>
 								</div>
 							

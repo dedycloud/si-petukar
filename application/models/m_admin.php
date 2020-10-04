@@ -43,7 +43,7 @@ class M_admin extends CI_Model{
 	}
 
 	function get_users_by_id($id){
-		$sql="SELECT * from users where id = '$id'";
+		$sql="SELECT a.*,b.group_id from users as a, users_groups as b where a.id = '$id' and a.id= b.user_id limit 1";
 		$result = $this->db->query($sql);
 		return $result->result();	
 	}
